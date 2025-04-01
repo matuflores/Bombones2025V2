@@ -1,0 +1,7 @@
+﻿1|Almendras
+2|Avellanas
+3|Pistachos
+4|Castañas
+5|Pipas de girasol
+6|Nueces
+7|Pasas
