@@ -16,7 +16,7 @@ namespace Bombones2025.Datos.Repositorios
         public PaisRepositorio(string rutaArchivo)
         {
             ruta = rutaArchivo;
-            LeerDatos(ruta);
+            LeerDatos();
         }
         //el sammury sirve para documentar, tengo que apretar "///"
         /// <summary>
@@ -25,14 +25,15 @@ namespace Bombones2025.Datos.Repositorios
         /// <returns></returns>
         public List<Pais> GetPais()
         {
-            return paises;
+            //return paises;
+            return paises.OrderBy(p=>p.NombrePais).ToList(); // de esta forma enlisto los paises de manera ordenada por nombre
         }
        
         /// <summary>
         /// falta un metodo para leer los datos del archivo
         /// </summary>
         /// <param name="ruta">Se pasa el nombre del archivo</param>
-        private void LeerDatos (string ruta)//atributo void se usa cuando el metodo no devuelve ningun valor
+        private void LeerDatos()//atributo void se usa cuando el metodo no devuelve ningun valor
         {
             if (!File.Exists(ruta))//si no tengo un archivo no retorna nada
             {
@@ -61,6 +62,36 @@ namespace Bombones2025.Datos.Repositorios
                 NombrePais = nombrePais,
                 PaisId = paisId,
             };
+        }
+
+        private int SetarPaisId()//retoma el pais con ID mmas alto y lo agrego consecutivo
+        {
+            return paises.Max(p=>p.PaisId)+1;
+        }
+        public void Agregar(Pais pais)
+        {
+
+            pais.PaisId = SetarPaisId();
+            paises.Add(pais);// ahora lo tengo que agregar en el archivo
+            if (File.Exists(ruta))
+            {
+                var registros = File.ReadAllText(ruta);
+                if (!string.IsNullOrEmpty(registros)&& !registros.EndsWith(Environment.NewLine))
+                {
+                    File.WriteAllText(ruta, Environment.NewLine);
+                }
+            }
+            using (var escritor = new StreamWriter(ruta, true))//el TRUE le indica el StreamWritter que debe agregar lo que le paso aca
+            {//es decir no crear un archivo de nuevo, si no que lo agrega al final
+                string linea = ConstruirLinea(pais);
+                escritor.WriteLine(linea);
+                //pruebasiseguardaenrepositorio
+            }
+        }
+
+        private string ConstruirLinea(Pais pais)
+        {
+            return $"{pais.PaisId}|{pais.NombrePais}";
         }
     }
 }

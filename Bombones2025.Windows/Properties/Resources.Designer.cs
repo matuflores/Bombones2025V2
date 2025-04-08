@@ -63,6 +63,16 @@ namespace Bombones2025.Windows.Properties {
         /// <summary>
         ///   Busca un recurso adaptado de tipo System.Drawing.Bitmap.
         /// </summary>
+        internal static System.Drawing.Bitmap CANCEL40 {
+            get {
+                object obj = ResourceManager.GetObject("CANCEL40", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Busca un recurso adaptado de tipo System.Drawing.Bitmap.
+        /// </summary>
         internal static System.Drawing.Bitmap CLOSE40 {
             get {
                 object obj = ResourceManager.GetObject("CLOSE40", resourceCulture);
@@ -106,6 +116,16 @@ namespace Bombones2025.Windows.Properties {
         internal static System.Drawing.Bitmap NEW40 {
             get {
                 object obj = ResourceManager.GetObject("NEW40", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Busca un recurso adaptado de tipo System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap OK40 {
+            get {
+                object obj = ResourceManager.GetObject("OK40", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }

@@ -74,6 +74,7 @@
             dgvDatosPaises.Location = new Point(0, 67);
             dgvDatosPaises.Name = "dgvDatosPaises";
             dgvDatosPaises.ReadOnly = true;
+            dgvDatosPaises.RowHeadersVisible = false;
             dgvDatosPaises.RowHeadersWidth = 51;
             dgvDatosPaises.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
             dgvDatosPaises.Size = new Size(800, 306);
@@ -86,6 +87,7 @@
             PaisId.MinimumWidth = 6;
             PaisId.Name = "PaisId";
             PaisId.ReadOnly = true;
+            PaisId.SortMode = DataGridViewColumnSortMode.NotSortable;
             PaisId.Visible = false;
             PaisId.Width = 51;
             // 
@@ -96,6 +98,7 @@
             Paises.MinimumWidth = 6;
             Paises.Name = "Paises";
             Paises.ReadOnly = true;
+            Paises.SortMode = DataGridViewColumnSortMode.NotSortable;
             // 
             // toolStrip1
             // 
@@ -116,6 +119,7 @@
             btnNuevo.Size = new Size(62, 64);
             btnNuevo.Text = "NUEVO";
             btnNuevo.TextImageRelation = TextImageRelation.ImageAboveText;
+            btnNuevo.Click += btnNuevo_Click;
             // 
             // toolStripButton3
             // 
@@ -186,6 +190,7 @@
             toolStripButton7.Size = new Size(67, 64);
             toolStripButton7.Text = "CERRAR";
             toolStripButton7.TextImageRelation = TextImageRelation.ImageAboveText;
+            toolStripButton7.Click += toolStripButton7_Click;
             // 
             // FrmPaises
             // 

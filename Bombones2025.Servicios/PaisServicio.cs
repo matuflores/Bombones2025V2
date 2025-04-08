@@ -19,5 +19,9 @@ namespace Bombones2025.Servicios
             return _paisRepositorio.GetPais();//los paises se los pide al repositorio.
         }
 
+        public void Guardar(Pais pais)
+        {
+            _paisRepositorio.Agregar(pais);
+        }
     }
 }
