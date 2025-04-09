@@ -61,19 +61,38 @@ namespace Bombones2025.Windows
 
         private void btnNuevo_Click(object sender, EventArgs e)
         {
-            FrmPaisesAE frm = new FrmPaisesAE() { Text="NUEVO PAIS"};
-            DialogResult dr= frm.ShowDialog(this);
+            FrmPaisesAE frm = new FrmPaisesAE() { Text = "NUEVO PAIS" };
+            DialogResult dr = frm.ShowDialog(this);
             if (dr == DialogResult.Cancel) return;
             Pais? pais = frm.GetPais();
             if (pais == null) return;
             _paisServicio.Guardar(pais);
-            DataGridViewRow r= new DataGridViewRow();
+            DataGridViewRow r = new DataGridViewRow();
             r.CreateCells(dgvDatosPaises);
             SetearFila(r, pais);
             AgregarFila(r);
             MessageBox.Show("Pais Agregado", "Mensaje", MessageBoxButtons.OK, MessageBoxIcon.Information);
 
 
+        }
+
+        private void btnBorrar_Click(object sender, EventArgs e)
+        {
+            if (dgvDatosPaises.SelectedRows.Count==0)
+            {
+                return;
+            }
+            var r=dgvDatosPaises.SelectedRows[0];
+            Pais paisBorrar = (Pais)r.Tag!;
+            DialogResult dr=MessageBox.Show($"¿QUIERE ELIMINAR EL PAIS {paisBorrar}?","CONFIRMAR ELIMINACION", 
+                MessageBoxButtons.YesNo, 
+                MessageBoxIcon.Question, 
+                MessageBoxDefaultButton.Button2);
+
+            if (dr == DialogResult.No) return;
+            _paisServicio.Borrar(paisBorrar);
+            dgvDatosPaises.Rows.Remove(r);//una vez que lo borre lo elimino de la grilla.
+            MessageBox.Show("PAIS ELIMINADO CORRECTAMENTE");
         }
     }
 }

@@ -34,13 +34,13 @@
             Paises = new DataGridViewTextBoxColumn();
             toolStrip1 = new ToolStrip();
             btnNuevo = new ToolStripButton();
-            toolStripButton3 = new ToolStripButton();
-            toolStripButton4 = new ToolStripButton();
+            btnBorrar = new ToolStripButton();
+            btnEditar = new ToolStripButton();
             toolStripSeparator1 = new ToolStripSeparator();
-            toolStripButton5 = new ToolStripButton();
-            toolStripButton6 = new ToolStripButton();
+            btnFiltrar = new ToolStripButton();
+            btnRefresh = new ToolStripButton();
             toolStripSeparator2 = new ToolStripSeparator();
-            toolStripButton2 = new ToolStripButton();
+            btnPrint = new ToolStripButton();
             toolStripButton7 = new ToolStripButton();
             ((System.ComponentModel.ISupportInitialize)splitContainer1).BeginInit();
             splitContainer1.Panel1.SuspendLayout();
@@ -103,7 +103,7 @@
             // toolStrip1
             // 
             toolStrip1.ImageScalingSize = new Size(20, 20);
-            toolStrip1.Items.AddRange(new ToolStripItem[] { btnNuevo, toolStripButton3, toolStripButton4, toolStripSeparator1, toolStripButton5, toolStripButton6, toolStripSeparator2, toolStripButton2, toolStripButton7 });
+            toolStrip1.Items.AddRange(new ToolStripItem[] { btnNuevo, btnBorrar, btnEditar, toolStripSeparator1, btnFiltrar, btnRefresh, toolStripSeparator2, btnPrint, toolStripButton7 });
             toolStrip1.Location = new Point(0, 0);
             toolStrip1.Name = "toolStrip1";
             toolStrip1.Size = new Size(800, 67);
@@ -121,65 +121,66 @@
             btnNuevo.TextImageRelation = TextImageRelation.ImageAboveText;
             btnNuevo.Click += btnNuevo_Click;
             // 
-            // toolStripButton3
+            // btnBorrar
             // 
-            toolStripButton3.Image = Properties.Resources.DELETE40;
-            toolStripButton3.ImageScaling = ToolStripItemImageScaling.None;
-            toolStripButton3.ImageTransparentColor = Color.Magenta;
-            toolStripButton3.Name = "toolStripButton3";
-            toolStripButton3.Size = new Size(70, 64);
-            toolStripButton3.Text = "BORRAR";
-            toolStripButton3.TextImageRelation = TextImageRelation.ImageAboveText;
+            btnBorrar.Image = Properties.Resources.DELETE40;
+            btnBorrar.ImageScaling = ToolStripItemImageScaling.None;
+            btnBorrar.ImageTransparentColor = Color.Magenta;
+            btnBorrar.Name = "btnBorrar";
+            btnBorrar.Size = new Size(70, 64);
+            btnBorrar.Text = "BORRAR";
+            btnBorrar.TextImageRelation = TextImageRelation.ImageAboveText;
+            btnBorrar.Click += btnBorrar_Click;
             // 
-            // toolStripButton4
+            // btnEditar
             // 
-            toolStripButton4.Image = Properties.Resources.EDIT40;
-            toolStripButton4.ImageScaling = ToolStripItemImageScaling.None;
-            toolStripButton4.ImageTransparentColor = Color.Magenta;
-            toolStripButton4.Name = "toolStripButton4";
-            toolStripButton4.Size = new Size(62, 64);
-            toolStripButton4.Text = "EDITAR";
-            toolStripButton4.TextImageRelation = TextImageRelation.ImageAboveText;
+            btnEditar.Image = Properties.Resources.EDIT40;
+            btnEditar.ImageScaling = ToolStripItemImageScaling.None;
+            btnEditar.ImageTransparentColor = Color.Magenta;
+            btnEditar.Name = "btnEditar";
+            btnEditar.Size = new Size(62, 64);
+            btnEditar.Text = "EDITAR";
+            btnEditar.TextImageRelation = TextImageRelation.ImageAboveText;
             // 
             // toolStripSeparator1
             // 
             toolStripSeparator1.Name = "toolStripSeparator1";
             toolStripSeparator1.Size = new Size(6, 67);
             // 
-            // toolStripButton5
+            // btnFiltrar
             // 
-            toolStripButton5.Image = Properties.Resources.FILTRO40;
-            toolStripButton5.ImageScaling = ToolStripItemImageScaling.None;
-            toolStripButton5.ImageTransparentColor = Color.Magenta;
-            toolStripButton5.Name = "toolStripButton5";
-            toolStripButton5.Size = new Size(66, 64);
-            toolStripButton5.Text = "FILTRAR";
-            toolStripButton5.TextImageRelation = TextImageRelation.ImageAboveText;
+            btnFiltrar.Image = Properties.Resources.FILTRO40;
+            btnFiltrar.ImageScaling = ToolStripItemImageScaling.None;
+            btnFiltrar.ImageTransparentColor = Color.Magenta;
+            btnFiltrar.Name = "btnFiltrar";
+            btnFiltrar.Size = new Size(66, 64);
+            btnFiltrar.Text = "FILTRAR";
+            btnFiltrar.TextImageRelation = TextImageRelation.ImageAboveText;
             // 
-            // toolStripButton6
+            // btnRefresh
             // 
-            toolStripButton6.Image = Properties.Resources.REFRESH40;
-            toolStripButton6.ImageScaling = ToolStripItemImageScaling.None;
-            toolStripButton6.ImageTransparentColor = Color.Magenta;
-            toolStripButton6.Name = "toolStripButton6";
-            toolStripButton6.Size = new Size(73, 64);
-            toolStripButton6.Text = "REFRESH";
-            toolStripButton6.TextImageRelation = TextImageRelation.ImageAboveText;
+            btnRefresh.Image = Properties.Resources.REFRESH40;
+            btnRefresh.ImageScaling = ToolStripItemImageScaling.None;
+            btnRefresh.ImageTransparentColor = Color.Magenta;
+            btnRefresh.Name = "btnRefresh";
+            btnRefresh.Size = new Size(73, 64);
+            btnRefresh.Text = "REFRESH";
+            btnRefresh.TextImageRelation = TextImageRelation.ImageAboveText;
             // 
             // toolStripSeparator2
             // 
             toolStripSeparator2.Name = "toolStripSeparator2";
             toolStripSeparator2.Size = new Size(6, 67);
             // 
-            // toolStripButton2
+            // btnPrint
             // 
-            toolStripButton2.Image = Properties.Resources.PRINT40;
-            toolStripButton2.ImageScaling = ToolStripItemImageScaling.None;
-            toolStripButton2.ImageTransparentColor = Color.Magenta;
-            toolStripButton2.Name = "toolStripButton2";
-            toolStripButton2.Size = new Size(53, 64);
-            toolStripButton2.Text = "PRINT";
-            toolStripButton2.TextImageRelation = TextImageRelation.ImageAboveText;
+            btnPrint.Image = Properties.Resources.PRINT40;
+            btnPrint.ImageScaling = ToolStripItemImageScaling.None;
+            btnPrint.ImageTransparentColor = Color.Magenta;
+            btnPrint.Name = "btnPrint";
+            btnPrint.Size = new Size(53, 64);
+            btnPrint.Text = "PRINT";
+            btnPrint.TextImageRelation = TextImageRelation.ImageAboveText;
             // 
             // toolStripButton7
             // 
@@ -216,13 +217,13 @@
 
         private SplitContainer splitContainer1;
         private ToolStrip toolStrip1;
-        private ToolStripButton toolStripButton2;
+        private ToolStripButton btnPrint;
         private ToolStripButton btnNuevo;
-        private ToolStripButton toolStripButton3;
-        private ToolStripButton toolStripButton4;
+        private ToolStripButton btnBorrar;
+        private ToolStripButton btnEditar;
         private ToolStripSeparator toolStripSeparator1;
-        private ToolStripButton toolStripButton5;
-        private ToolStripButton toolStripButton6;
+        private ToolStripButton btnFiltrar;
+        private ToolStripButton btnRefresh;
         private ToolStripSeparator toolStripSeparator2;
         private ToolStripButton toolStripButton7;
         private DataGridView dgvDatosPaises;

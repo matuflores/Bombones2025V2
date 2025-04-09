@@ -12,6 +12,11 @@ namespace Bombones2025.Servicios
             _paisRepositorio = new PaisRepositorio(ruta);
         }
 
+        public void Borrar(Pais pais)
+        {
+            _paisRepositorio.Borrar(pais);
+        }
+
 
         //hacerme de intermediario entre la capa de datos.
         public List<Pais> GetPaises()
