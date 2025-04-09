@@ -21,8 +21,15 @@ namespace Bombones2025.Windows
         private void btnPaises_Click(object sender, EventArgs e)
         {
             PaisServicio servicio = new PaisServicio("Paises.txt");
-            FrmPaises frm=new FrmPaises(servicio) { Text="Listado de Paises"};//inyecto el servicio en el ctor del formulario
+            FrmPaises frm = new FrmPaises(servicio) { Text = "Listado de Paises" };//inyecto el servicio en el ctor del formulario
             frm.ShowDialog(this);//lo muestro cuando se habre el form de paises
+        }
+
+        private void btnFrutosSecos_Click(object sender, EventArgs e)
+        {
+            FrutoSecoServicio servicio = new FrutoSecoServicio("FrutosSecos.txt");
+            FrmFrutosSecos frm = new FrmFrutosSecos(servicio) { Text = "Listado de Frutos Secos" };
+            frm.ShowDialog(this);
         }
     }
 }

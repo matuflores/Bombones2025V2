@@ -29,6 +29,7 @@
         private void InitializeComponent()
         {
             btnPaises = new Button();
+            btnFrutosSecos = new Button();
             SuspendLayout();
             // 
             // btnPaises
@@ -41,11 +42,22 @@
             btnPaises.UseVisualStyleBackColor = true;
             btnPaises.Click += btnPaises_Click;
             // 
+            // btnFrutosSecos
+            // 
+            btnFrutosSecos.Location = new Point(337, 61);
+            btnFrutosSecos.Name = "btnFrutosSecos";
+            btnFrutosSecos.Size = new Size(145, 64);
+            btnFrutosSecos.TabIndex = 1;
+            btnFrutosSecos.Text = "FRUTOS SECOS";
+            btnFrutosSecos.UseVisualStyleBackColor = true;
+            btnFrutosSecos.Click += btnFrutosSecos_Click;
+            // 
             // FrmPrincipal
             // 
             AutoScaleDimensions = new SizeF(8F, 20F);
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(800, 450);
+            Controls.Add(btnFrutosSecos);
             Controls.Add(btnPaises);
             Name = "FrmPrincipal";
             StartPosition = FormStartPosition.CenterScreen;
@@ -56,5 +68,6 @@
         #endregion
 
         private Button btnPaises;
+        private Button btnFrutosSecos;
     }
 }
