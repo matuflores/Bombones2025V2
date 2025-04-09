@@ -17,6 +17,11 @@ namespace Bombones2025.Servicios
             _paisRepositorio.Borrar(pais);
         }
 
+        public bool Existe(Pais pais)
+        {
+            return _paisRepositorio.Existe(pais);
+        }
+
 
         //hacerme de intermediario entre la capa de datos.
         public List<Pais> GetPaises()
@@ -26,7 +31,14 @@ namespace Bombones2025.Servicios
 
         public void Guardar(Pais pais)
         {
-            _paisRepositorio.Agregar(pais);
+            if (pais.PaisId==0)
+            {
+                _paisRepositorio.Agregar(pais);
+            }
+            else
+            {
+                _paisRepositorio.Editar(pais);
+            }
         }
     }
 }

@@ -120,6 +120,24 @@ namespace Bombones2025.Datos.Repositorios
             var registros=paises.Select(p=>ConstruirLinea(p)).ToArray();//en select es un metodo de LINQ me permite hacer una proyeccion del objeto que estoy trabajando
             File.WriteAllLines(ruta, registros);
         }
-        //A VER SI SE GUARDO
+
+        public bool Existe(Pais pais)//ahi me fijo si el id es cero tengo que ver si no hay un pais con el mismo nombre y si el id es distinto de cero me fijo si en la lista no tengo ese pais con otro ID
+        {
+            return pais.PaisId == 0 ? paises.Any(p => p.NombrePais == pais.NombrePais) :
+                paises.Any(p => p.NombrePais == pais.NombrePais && p.PaisId != pais.PaisId);
+        }
+
+        public void Editar(Pais pais)
+        {
+            var paisEditado = paises.FirstOrDefault(p => p.PaisId == pais.PaisId);
+            if (paisEditado is null)
+            {
+                return;
+
+            }
+            paisEditado.NombrePais = pais.NombrePais;
+            var registros = paises.Select(p => ConstruirLinea(p)).ToArray();//en select es un metodo de LINQ me permite hacer una proyeccion del objeto que estoy trabajando
+            File.WriteAllLines(ruta, registros);
+        }
     }
 }

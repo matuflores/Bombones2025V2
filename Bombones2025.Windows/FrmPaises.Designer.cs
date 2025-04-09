@@ -141,6 +141,7 @@
             btnEditar.Size = new Size(62, 64);
             btnEditar.Text = "EDITAR";
             btnEditar.TextImageRelation = TextImageRelation.ImageAboveText;
+            btnEditar.Click += btnEditar_Click;
             // 
             // toolStripSeparator1
             // 
