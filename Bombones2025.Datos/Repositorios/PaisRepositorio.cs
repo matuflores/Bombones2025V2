@@ -110,7 +110,16 @@ namespace Bombones2025.Datos.Repositorios
 
         public void Borrar(Pais pais)
         {
-            throw new NotImplementedException();
+            Pais? paisBorrar=paises.FirstOrDefault(p=>p.NombrePais==pais.NombrePais);//EL FIRST ME TRAE EL PRIMERO QUE ENCUENTRE O SINO POR DEFECTO ME TRAER NULO, entonces le pongo que puede ser un "Pais"
+            if (paisBorrar is null)
+            {
+                return;
+            }
+            paises.Remove(paisBorrar);
+
+            var registros=paises.Select(p=>ConstruirLinea(p)).ToArray();//en select es un metodo de LINQ me permite hacer una proyeccion del objeto que estoy trabajando
+            File.WriteAllLines(ruta, registros);
         }
+        //A VER SI SE GUARDO
     }
 }

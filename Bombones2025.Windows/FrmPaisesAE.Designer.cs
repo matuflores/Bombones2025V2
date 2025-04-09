@@ -88,7 +88,10 @@
             Controls.Add(buttonOkPaisAE);
             Controls.Add(label1);
             Controls.Add(textBoxPais);
+            MaximumSize = new Size(779, 294);
+            MinimumSize = new Size(779, 294);
             Name = "FrmPaisesAE";
+            StartPosition = FormStartPosition.CenterScreen;
             Text = "PAISES AE";
             ((System.ComponentModel.ISupportInitialize)errorProviderPaisAe).EndInit();
             ResumeLayout(false);
