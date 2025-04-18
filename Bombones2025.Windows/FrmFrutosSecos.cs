@@ -33,10 +33,10 @@ namespace Bombones2025.Windows
             dgvDatosFrutosSecos.Rows.Clear();
             foreach (var frutoSecos in _frutosSecos)
             {
-                DataGridViewRow r = new DataGridViewRow();
-                r.CreateCells(dgvDatosFrutosSecos);
-                SetearFila(r, frutoSecos);
-                AgregarFila(r);
+                DataGridViewRow r = new DataGridViewRow();//creo la fila
+                r.CreateCells(dgvDatosFrutosSecos);//creo en la fila la cantidad de columnas que tengo en el dgv
+                SetearFila(r, frutoSecos);//lleno la fila con los datos del objeto
+                AgregarFila(r);//agrego la fila para que se vea en pantalla
             }
         }
 

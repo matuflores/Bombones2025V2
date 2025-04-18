@@ -29,7 +29,7 @@
         private void InitializeComponent()
         {
             splitContainer1 = new SplitContainer();
-            dataGridView1 = new DataGridView();
+            dgvTiposRellenos = new DataGridView();
             TipoRellenoId = new DataGridViewTextBoxColumn();
             TiposRellenos = new DataGridViewTextBoxColumn();
             toolStripTiposRellenos = new ToolStrip();
@@ -45,7 +45,7 @@
             ((System.ComponentModel.ISupportInitialize)splitContainer1).BeginInit();
             splitContainer1.Panel1.SuspendLayout();
             splitContainer1.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)dataGridView1).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)dgvTiposRellenos).BeginInit();
             toolStripTiposRellenos.SuspendLayout();
             SuspendLayout();
             // 
@@ -58,27 +58,27 @@
             // 
             // splitContainer1.Panel1
             // 
-            splitContainer1.Panel1.Controls.Add(dataGridView1);
+            splitContainer1.Panel1.Controls.Add(dgvTiposRellenos);
             splitContainer1.Panel1.Controls.Add(toolStripTiposRellenos);
             splitContainer1.Size = new Size(800, 450);
             splitContainer1.SplitterDistance = 336;
             splitContainer1.TabIndex = 0;
             // 
-            // dataGridView1
+            // dgvTiposRellenos
             // 
-            dataGridView1.AllowUserToAddRows = false;
-            dataGridView1.AllowUserToDeleteRows = false;
-            dataGridView1.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            dataGridView1.Columns.AddRange(new DataGridViewColumn[] { TipoRellenoId, TiposRellenos });
-            dataGridView1.Dock = DockStyle.Fill;
-            dataGridView1.Location = new Point(0, 67);
-            dataGridView1.Name = "dataGridView1";
-            dataGridView1.ReadOnly = true;
-            dataGridView1.RowHeadersVisible = false;
-            dataGridView1.RowHeadersWidth = 51;
-            dataGridView1.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
-            dataGridView1.Size = new Size(800, 269);
-            dataGridView1.TabIndex = 3;
+            dgvTiposRellenos.AllowUserToAddRows = false;
+            dgvTiposRellenos.AllowUserToDeleteRows = false;
+            dgvTiposRellenos.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            dgvTiposRellenos.Columns.AddRange(new DataGridViewColumn[] { TipoRellenoId, TiposRellenos });
+            dgvTiposRellenos.Dock = DockStyle.Fill;
+            dgvTiposRellenos.Location = new Point(0, 67);
+            dgvTiposRellenos.Name = "dgvTiposRellenos";
+            dgvTiposRellenos.ReadOnly = true;
+            dgvTiposRellenos.RowHeadersVisible = false;
+            dgvTiposRellenos.RowHeadersWidth = 51;
+            dgvTiposRellenos.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
+            dgvTiposRellenos.Size = new Size(800, 269);
+            dgvTiposRellenos.TabIndex = 3;
             // 
             // TipoRellenoId
             // 
@@ -116,6 +116,7 @@
             btnNuevo.Size = new Size(62, 64);
             btnNuevo.Text = "NUEVO";
             btnNuevo.TextImageRelation = TextImageRelation.ImageAboveText;
+            btnNuevo.Click += btnNuevo_Click;
             // 
             // btnBorrar
             // 
@@ -186,6 +187,7 @@
             btnCerrar.Size = new Size(67, 64);
             btnCerrar.Text = "CERRAR";
             btnCerrar.TextImageRelation = TextImageRelation.ImageAboveText;
+            btnCerrar.Click += btnCerrar_Click;
             // 
             // FrmTiposRellenos
             // 
@@ -200,7 +202,7 @@
             splitContainer1.Panel1.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)splitContainer1).EndInit();
             splitContainer1.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)dataGridView1).EndInit();
+            ((System.ComponentModel.ISupportInitialize)dgvTiposRellenos).EndInit();
             toolStripTiposRellenos.ResumeLayout(false);
             toolStripTiposRellenos.PerformLayout();
             ResumeLayout(false);
@@ -209,7 +211,7 @@
         #endregion
 
         private SplitContainer splitContainer1;
-        private DataGridView dataGridView1;
+        private DataGridView dgvTiposRellenos;
         private ToolStrip toolStripTiposRellenos;
         private ToolStripButton btnNuevo;
         private ToolStripButton btnBorrar;

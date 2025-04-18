@@ -41,6 +41,7 @@ namespace Bombones2025.Datos.Repositorios
         
         private FrutoSeco ConstruirFrutoSeco(string registro)
         {
+
             var campos=registro.Split('|');
             var frutoSecoId = int.Parse(campos[0]);
             var nombreFrutoSeco = campos[1];

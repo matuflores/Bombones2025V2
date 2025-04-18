@@ -35,7 +35,19 @@ namespace Bombones2025.Datos.Repositorios
 
         private TipoRelleno ConstruirTipoRelleno(string registro)
         {
-            throw new NotImplementedException();
+            var campo=registro.Split('|');//separo al registro en donde encuentre la condicion indicada
+            var tipoRellenoId = int.Parse(campo[0]);//asigno el valor del campo 0 al atributo tipoRellenoId (como se que es un entero tengo que convert)
+            var nombreTipoRelleno = campo[1];
+            return new TipoRelleno()//este metodo me va a devolver un nuevo tipo de relleno con su id y su nombre
+            {
+                NombreTipoRelleno = nombreTipoRelleno,
+                TipoRellenoId=tipoRellenoId
+            };
+        }
+
+        public List<TipoRelleno> GetTipoRellenos()
+        {
+            return tiposRellenos;
         }
     }
 }
