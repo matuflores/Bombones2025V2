@@ -29,7 +29,7 @@
         private void InitializeComponent()
         {
             splitContainer1 = new SplitContainer();
-            dgvDatosFrutosSecos = new DataGridView();
+            toolStripFrutosSecos = new ToolStrip();
             btnNuevo = new ToolStripButton();
             btnBorrar = new ToolStripButton();
             btnEditar = new ToolStripButton();
@@ -39,14 +39,14 @@
             toolStripSeparator2 = new ToolStripSeparator();
             btnPrint = new ToolStripButton();
             toolStripButton7 = new ToolStripButton();
-            toolStripFrutosSecos = new ToolStrip();
+            dgvDatosFrutosSecos = new DataGridView();
             FrutoSecoId = new DataGridViewTextBoxColumn();
             FrutosSecos = new DataGridViewTextBoxColumn();
             ((System.ComponentModel.ISupportInitialize)splitContainer1).BeginInit();
             splitContainer1.Panel1.SuspendLayout();
             splitContainer1.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)dgvDatosFrutosSecos).BeginInit();
             toolStripFrutosSecos.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)dgvDatosFrutosSecos).BeginInit();
             SuspendLayout();
             // 
             // splitContainer1
@@ -64,20 +64,15 @@
             splitContainer1.SplitterDistance = 360;
             splitContainer1.TabIndex = 0;
             // 
-            // dgvDatosFrutosSecos
+            // toolStripFrutosSecos
             // 
-            dgvDatosFrutosSecos.AllowUserToAddRows = false;
-            dgvDatosFrutosSecos.AllowUserToDeleteRows = false;
-            dgvDatosFrutosSecos.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            dgvDatosFrutosSecos.Columns.AddRange(new DataGridViewColumn[] { FrutoSecoId, FrutosSecos });
-            dgvDatosFrutosSecos.Location = new Point(0, 70);
-            dgvDatosFrutosSecos.Name = "dgvDatosFrutosSecos";
-            dgvDatosFrutosSecos.ReadOnly = true;
-            dgvDatosFrutosSecos.RowHeadersVisible = false;
-            dgvDatosFrutosSecos.RowHeadersWidth = 51;
-            dgvDatosFrutosSecos.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
-            dgvDatosFrutosSecos.Size = new Size(800, 290);
-            dgvDatosFrutosSecos.TabIndex = 0;
+            toolStripFrutosSecos.ImageScalingSize = new Size(20, 20);
+            toolStripFrutosSecos.Items.AddRange(new ToolStripItem[] { btnNuevo, btnBorrar, btnEditar, toolStripSeparator1, btnFiltrar, btnRefresh, toolStripSeparator2, btnPrint, toolStripButton7 });
+            toolStripFrutosSecos.Location = new Point(0, 0);
+            toolStripFrutosSecos.Name = "toolStripFrutosSecos";
+            toolStripFrutosSecos.Size = new Size(800, 67);
+            toolStripFrutosSecos.TabIndex = 1;
+            toolStripFrutosSecos.Text = "toolStrip1";
             // 
             // btnNuevo
             // 
@@ -88,6 +83,7 @@
             btnNuevo.Size = new Size(62, 64);
             btnNuevo.Text = "NUEVO";
             btnNuevo.TextImageRelation = TextImageRelation.ImageAboveText;
+            btnNuevo.Click += btnNuevo_Click;
             // 
             // btnBorrar
             // 
@@ -158,16 +154,22 @@
             toolStripButton7.Size = new Size(67, 64);
             toolStripButton7.Text = "CERRAR";
             toolStripButton7.TextImageRelation = TextImageRelation.ImageAboveText;
+            toolStripButton7.Click += toolStripButton7_Click;
             // 
-            // toolStripFrutosSecos
+            // dgvDatosFrutosSecos
             // 
-            toolStripFrutosSecos.ImageScalingSize = new Size(20, 20);
-            toolStripFrutosSecos.Items.AddRange(new ToolStripItem[] { btnNuevo, btnBorrar, btnEditar, toolStripSeparator1, btnFiltrar, btnRefresh, toolStripSeparator2, btnPrint, toolStripButton7 });
-            toolStripFrutosSecos.Location = new Point(0, 0);
-            toolStripFrutosSecos.Name = "toolStripFrutosSecos";
-            toolStripFrutosSecos.Size = new Size(800, 67);
-            toolStripFrutosSecos.TabIndex = 1;
-            toolStripFrutosSecos.Text = "toolStrip1";
+            dgvDatosFrutosSecos.AllowUserToAddRows = false;
+            dgvDatosFrutosSecos.AllowUserToDeleteRows = false;
+            dgvDatosFrutosSecos.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            dgvDatosFrutosSecos.Columns.AddRange(new DataGridViewColumn[] { FrutoSecoId, FrutosSecos });
+            dgvDatosFrutosSecos.Location = new Point(0, 70);
+            dgvDatosFrutosSecos.Name = "dgvDatosFrutosSecos";
+            dgvDatosFrutosSecos.ReadOnly = true;
+            dgvDatosFrutosSecos.RowHeadersVisible = false;
+            dgvDatosFrutosSecos.RowHeadersWidth = 51;
+            dgvDatosFrutosSecos.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
+            dgvDatosFrutosSecos.Size = new Size(800, 290);
+            dgvDatosFrutosSecos.TabIndex = 0;
             // 
             // FrutoSecoId
             // 
@@ -203,9 +205,9 @@
             splitContainer1.Panel1.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)splitContainer1).EndInit();
             splitContainer1.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)dgvDatosFrutosSecos).EndInit();
             toolStripFrutosSecos.ResumeLayout(false);
             toolStripFrutosSecos.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)dgvDatosFrutosSecos).EndInit();
             ResumeLayout(false);
         }
 

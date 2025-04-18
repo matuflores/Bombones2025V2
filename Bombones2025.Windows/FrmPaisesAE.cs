@@ -13,7 +13,7 @@ namespace Bombones2025.Windows
 {
     public partial class FrmPaisesAE : Form
     {
-        private Pais? pais;
+        private Pais? pais;//el signo de pregunta me indica que puede ser NULL 
         public FrmPaisesAE()
         {
             InitializeComponent();

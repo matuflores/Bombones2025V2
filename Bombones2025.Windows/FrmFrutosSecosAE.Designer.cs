@@ -28,11 +28,14 @@
         /// </summary>
         private void InitializeComponent()
         {
+            components = new System.ComponentModel.Container();
             buttonCancelFrutoSecoAE = new Button();
             buttonOkFrutoSecoAE = new Button();
             label1 = new Label();
             textBoxFrutoSeco = new TextBox();
             label2 = new Label();
+            errorProviderFrutoSecoAE = new ErrorProvider(components);
+            ((System.ComponentModel.ISupportInitialize)errorProviderFrutoSecoAE).BeginInit();
             SuspendLayout();
             // 
             // buttonCancelFrutoSecoAE
@@ -54,6 +57,7 @@
             buttonOkFrutoSecoAE.TabIndex = 6;
             buttonOkFrutoSecoAE.TextImageRelation = TextImageRelation.ImageAboveText;
             buttonOkFrutoSecoAE.UseVisualStyleBackColor = true;
+            buttonOkFrutoSecoAE.Click += buttonOkFrutoSecoAE_Click;
             // 
             // label1
             // 
@@ -78,6 +82,10 @@
             label2.TabIndex = 9;
             label2.Text = "Fruto Seco:";
             // 
+            // errorProviderFrutoSecoAE
+            // 
+            errorProviderFrutoSecoAE.ContainerControl = this;
+            // 
             // FrmFrutosSecosAE
             // 
             AutoScaleDimensions = new SizeF(8F, 20F);
@@ -92,6 +100,7 @@
             MinimumSize = new Size(779, 294);
             Name = "FrmFrutosSecosAE";
             Text = "FrmFrutosSecosAE";
+            ((System.ComponentModel.ISupportInitialize)errorProviderFrutoSecoAE).EndInit();
             ResumeLayout(false);
             PerformLayout();
         }
@@ -103,5 +112,6 @@
         private Label label1;
         private TextBox textBoxFrutoSeco;
         private Label label2;
+        private ErrorProvider errorProviderFrutoSecoAE;
     }
 }
