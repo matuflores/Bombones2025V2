@@ -59,14 +59,14 @@ namespace Bombones2025.Windows
 
         private void btnNuevo_Click(object sender, EventArgs e)
         {
-            FrmFrutosSecosAE frm=new FrmFrutosSecosAE() { Text= "NUEVO FRUTO SECO"};
+            FrmFrutosSecosAE frm = new FrmFrutosSecosAE() { Text = "NUEVO FRUTO SECO" };
             DialogResult dr = frm.ShowDialog(this);
-            if (dr==DialogResult.Cancel)
+            if (dr == DialogResult.Cancel)
             {
                 return;
             }
             FrutoSeco? frutoSeco = frm.GetFrutoSeco();//esto me dice que puede o no puede ingresar un fruto seco en el frm
-            if (frutoSeco==null)
+            if (frutoSeco == null)
             {
                 return;
             }
@@ -83,6 +83,24 @@ namespace Bombones2025.Windows
             {
                 MessageBox.Show("Fruto Seco Existente", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
+        }
+
+        private void btnBorrar_Click(object sender, EventArgs e)
+        {
+            if (dgvDatosFrutosSecos.SelectedRows.Count==0)
+            {
+                return;
+            }
+            var r =dgvDatosFrutosSecos.SelectedRows[0];//guardamos en r la primer fila seleccionada
+            FrutoSeco frutoSecoBorrar = (FrutoSeco)r.Tag!;
+            DialogResult dr = MessageBox.Show($"¿QUIERE ELIMINAR EL FRUTO SECO {frutoSecoBorrar}?", "CONFIRMAR ELIMINACION",
+                MessageBoxButtons.YesNo,
+                MessageBoxIcon.Question,
+                MessageBoxDefaultButton.Button2);
+            if (dr == DialogResult.No) return;
+            _frutosSecosServicio.Borrar(frutoSecoBorrar);
+            dgvDatosFrutosSecos.Rows.Remove(r);
+            MessageBox.Show("FRUTO SECO ELIMINADO CORRECTAMENTE");
         }
     }
 }

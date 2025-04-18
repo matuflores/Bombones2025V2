@@ -1,6 +1,6 @@
 ﻿namespace Bombones2025.Windows
 {
-    partial class FrmFrutosSecos
+    partial class FrmTiposRellenos
     {
         /// <summary>
         /// Required designer variable.
@@ -29,7 +29,10 @@
         private void InitializeComponent()
         {
             splitContainer1 = new SplitContainer();
-            toolStripFrutosSecos = new ToolStrip();
+            dataGridView1 = new DataGridView();
+            TipoRellenoId = new DataGridViewTextBoxColumn();
+            TiposRellenos = new DataGridViewTextBoxColumn();
+            toolStripTiposRellenos = new ToolStrip();
             btnNuevo = new ToolStripButton();
             btnBorrar = new ToolStripButton();
             btnEditar = new ToolStripButton();
@@ -38,15 +41,12 @@
             btnRefresh = new ToolStripButton();
             toolStripSeparator2 = new ToolStripSeparator();
             btnPrint = new ToolStripButton();
-            toolStripButton7 = new ToolStripButton();
-            dgvDatosFrutosSecos = new DataGridView();
-            FrutoSecoId = new DataGridViewTextBoxColumn();
-            FrutosSecos = new DataGridViewTextBoxColumn();
+            btnCerrar = new ToolStripButton();
             ((System.ComponentModel.ISupportInitialize)splitContainer1).BeginInit();
             splitContainer1.Panel1.SuspendLayout();
             splitContainer1.SuspendLayout();
-            toolStripFrutosSecos.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)dgvDatosFrutosSecos).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)dataGridView1).BeginInit();
+            toolStripTiposRellenos.SuspendLayout();
             SuspendLayout();
             // 
             // splitContainer1
@@ -58,21 +58,54 @@
             // 
             // splitContainer1.Panel1
             // 
-            splitContainer1.Panel1.Controls.Add(toolStripFrutosSecos);
-            splitContainer1.Panel1.Controls.Add(dgvDatosFrutosSecos);
+            splitContainer1.Panel1.Controls.Add(dataGridView1);
+            splitContainer1.Panel1.Controls.Add(toolStripTiposRellenos);
             splitContainer1.Size = new Size(800, 450);
-            splitContainer1.SplitterDistance = 360;
+            splitContainer1.SplitterDistance = 336;
             splitContainer1.TabIndex = 0;
             // 
-            // toolStripFrutosSecos
+            // dataGridView1
             // 
-            toolStripFrutosSecos.ImageScalingSize = new Size(20, 20);
-            toolStripFrutosSecos.Items.AddRange(new ToolStripItem[] { btnNuevo, btnBorrar, btnEditar, toolStripSeparator1, btnFiltrar, btnRefresh, toolStripSeparator2, btnPrint, toolStripButton7 });
-            toolStripFrutosSecos.Location = new Point(0, 0);
-            toolStripFrutosSecos.Name = "toolStripFrutosSecos";
-            toolStripFrutosSecos.Size = new Size(800, 67);
-            toolStripFrutosSecos.TabIndex = 1;
-            toolStripFrutosSecos.Text = "toolStrip1";
+            dataGridView1.AllowUserToAddRows = false;
+            dataGridView1.AllowUserToDeleteRows = false;
+            dataGridView1.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            dataGridView1.Columns.AddRange(new DataGridViewColumn[] { TipoRellenoId, TiposRellenos });
+            dataGridView1.Dock = DockStyle.Fill;
+            dataGridView1.Location = new Point(0, 67);
+            dataGridView1.Name = "dataGridView1";
+            dataGridView1.ReadOnly = true;
+            dataGridView1.RowHeadersVisible = false;
+            dataGridView1.RowHeadersWidth = 51;
+            dataGridView1.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
+            dataGridView1.Size = new Size(800, 269);
+            dataGridView1.TabIndex = 3;
+            // 
+            // TipoRellenoId
+            // 
+            TipoRellenoId.HeaderText = "TipoDeRellenoId";
+            TipoRellenoId.MinimumWidth = 6;
+            TipoRellenoId.Name = "TipoRellenoId";
+            TipoRellenoId.ReadOnly = true;
+            TipoRellenoId.Visible = false;
+            TipoRellenoId.Width = 125;
+            // 
+            // TiposRellenos
+            // 
+            TiposRellenos.AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
+            TiposRellenos.HeaderText = "Tipos de Rellenos";
+            TiposRellenos.MinimumWidth = 6;
+            TiposRellenos.Name = "TiposRellenos";
+            TiposRellenos.ReadOnly = true;
+            // 
+            // toolStripTiposRellenos
+            // 
+            toolStripTiposRellenos.ImageScalingSize = new Size(20, 20);
+            toolStripTiposRellenos.Items.AddRange(new ToolStripItem[] { btnNuevo, btnBorrar, btnEditar, toolStripSeparator1, btnFiltrar, btnRefresh, toolStripSeparator2, btnPrint, btnCerrar });
+            toolStripTiposRellenos.Location = new Point(0, 0);
+            toolStripTiposRellenos.Name = "toolStripTiposRellenos";
+            toolStripTiposRellenos.Size = new Size(800, 67);
+            toolStripTiposRellenos.TabIndex = 2;
+            toolStripTiposRellenos.Text = "toolStrip1";
             // 
             // btnNuevo
             // 
@@ -83,7 +116,6 @@
             btnNuevo.Size = new Size(62, 64);
             btnNuevo.Text = "NUEVO";
             btnNuevo.TextImageRelation = TextImageRelation.ImageAboveText;
-            btnNuevo.Click += btnNuevo_Click;
             // 
             // btnBorrar
             // 
@@ -94,7 +126,6 @@
             btnBorrar.Size = new Size(70, 64);
             btnBorrar.Text = "BORRAR";
             btnBorrar.TextImageRelation = TextImageRelation.ImageAboveText;
-            btnBorrar.Click += btnBorrar_Click;
             // 
             // btnEditar
             // 
@@ -146,77 +177,40 @@
             btnPrint.Text = "PRINT";
             btnPrint.TextImageRelation = TextImageRelation.ImageAboveText;
             // 
-            // toolStripButton7
+            // btnCerrar
             // 
-            toolStripButton7.Image = Properties.Resources.CLOSE40;
-            toolStripButton7.ImageScaling = ToolStripItemImageScaling.None;
-            toolStripButton7.ImageTransparentColor = Color.Magenta;
-            toolStripButton7.Name = "toolStripButton7";
-            toolStripButton7.Size = new Size(67, 64);
-            toolStripButton7.Text = "CERRAR";
-            toolStripButton7.TextImageRelation = TextImageRelation.ImageAboveText;
-            toolStripButton7.Click += toolStripButton7_Click;
+            btnCerrar.Image = Properties.Resources.CLOSE40;
+            btnCerrar.ImageScaling = ToolStripItemImageScaling.None;
+            btnCerrar.ImageTransparentColor = Color.Magenta;
+            btnCerrar.Name = "btnCerrar";
+            btnCerrar.Size = new Size(67, 64);
+            btnCerrar.Text = "CERRAR";
+            btnCerrar.TextImageRelation = TextImageRelation.ImageAboveText;
             // 
-            // dgvDatosFrutosSecos
-            // 
-            dgvDatosFrutosSecos.AllowUserToAddRows = false;
-            dgvDatosFrutosSecos.AllowUserToDeleteRows = false;
-            dgvDatosFrutosSecos.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            dgvDatosFrutosSecos.Columns.AddRange(new DataGridViewColumn[] { FrutoSecoId, FrutosSecos });
-            dgvDatosFrutosSecos.Location = new Point(0, 70);
-            dgvDatosFrutosSecos.Name = "dgvDatosFrutosSecos";
-            dgvDatosFrutosSecos.ReadOnly = true;
-            dgvDatosFrutosSecos.RowHeadersVisible = false;
-            dgvDatosFrutosSecos.RowHeadersWidth = 51;
-            dgvDatosFrutosSecos.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
-            dgvDatosFrutosSecos.Size = new Size(800, 290);
-            dgvDatosFrutosSecos.TabIndex = 0;
-            // 
-            // FrutoSecoId
-            // 
-            FrutoSecoId.AutoSizeMode = DataGridViewAutoSizeColumnMode.None;
-            FrutoSecoId.HeaderText = "Id";
-            FrutoSecoId.MinimumWidth = 6;
-            FrutoSecoId.Name = "FrutoSecoId";
-            FrutoSecoId.ReadOnly = true;
-            FrutoSecoId.SortMode = DataGridViewColumnSortMode.NotSortable;
-            FrutoSecoId.Visible = false;
-            FrutoSecoId.Width = 125;
-            // 
-            // FrutosSecos
-            // 
-            FrutosSecos.AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
-            FrutosSecos.HeaderText = "Fruto Seco";
-            FrutosSecos.MinimumWidth = 6;
-            FrutosSecos.Name = "FrutosSecos";
-            FrutosSecos.ReadOnly = true;
-            FrutosSecos.SortMode = DataGridViewColumnSortMode.NotSortable;
-            // 
-            // FrmFrutosSecos
+            // FrmTiposRellenos
             // 
             AutoScaleDimensions = new SizeF(8F, 20F);
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(800, 450);
             Controls.Add(splitContainer1);
-            Name = "FrmFrutosSecos";
-            StartPosition = FormStartPosition.CenterScreen;
-            Text = "Frutos Secos";
-            Load += FrmFrutosSecos_Load;
+            Name = "FrmTiposRellenos";
+            Text = "Tipos de Rellenos";
+            Load += FrmTiposRellenos_Load;
             splitContainer1.Panel1.ResumeLayout(false);
             splitContainer1.Panel1.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)splitContainer1).EndInit();
             splitContainer1.ResumeLayout(false);
-            toolStripFrutosSecos.ResumeLayout(false);
-            toolStripFrutosSecos.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)dgvDatosFrutosSecos).EndInit();
+            ((System.ComponentModel.ISupportInitialize)dataGridView1).EndInit();
+            toolStripTiposRellenos.ResumeLayout(false);
+            toolStripTiposRellenos.PerformLayout();
             ResumeLayout(false);
         }
 
         #endregion
 
         private SplitContainer splitContainer1;
-        private DataGridView dgvDatosFrutosSecos;
-        private ToolStrip toolStripFrutosSecos;
+        private DataGridView dataGridView1;
+        private ToolStrip toolStripTiposRellenos;
         private ToolStripButton btnNuevo;
         private ToolStripButton btnBorrar;
         private ToolStripButton btnEditar;
@@ -225,8 +219,8 @@
         private ToolStripButton btnRefresh;
         private ToolStripSeparator toolStripSeparator2;
         private ToolStripButton btnPrint;
-        private ToolStripButton toolStripButton7;
-        private DataGridViewTextBoxColumn FrutoSecoId;
-        private DataGridViewTextBoxColumn FrutosSecos;
+        private ToolStripButton btnCerrar;
+        private DataGridViewTextBoxColumn TipoRellenoId;
+        private DataGridViewTextBoxColumn TiposRellenos;
     }
 }

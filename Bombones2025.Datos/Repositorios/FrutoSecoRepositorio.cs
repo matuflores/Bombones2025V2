@@ -76,7 +76,7 @@ namespace Bombones2025.Datos.Repositorios
 
         private int SetearFrutoSecoId()//con este metodo asigno el ID
         {
-            return frutosSecos.Max(f => f.FrutoSecoId) + 1;
+            return frutosSecos.Max(f => f.FrutoSecoId)+1;
         }
 
         public void Editar(FrutoSeco frutoSeco)
@@ -90,6 +90,18 @@ namespace Bombones2025.Datos.Repositorios
             frutoSecoEditado.NombreFrutoSeco = frutoSeco.NombreFrutoSeco;
             var registros = frutosSecos.Select(f => ConstruirLinea(f)).ToArray();//en select es un metodo de LINQ me permite hacer una proyeccion del objeto que estoy trabajando
             File.WriteAllLines(ruta, registros);
+        }
+
+        public void Borrar(FrutoSeco frutoSeco)
+        {//si no encuentra un fruto seco con ese nombre devuelve un null por eso el ?. El First me trae el primero que trae la condicion que especifica
+            FrutoSeco? frutoSecoBorrar = frutosSecos.FirstOrDefault(f => f.NombreFrutoSeco == frutoSeco.NombreFrutoSeco);
+            if (frutoSecoBorrar is null)
+            {
+                return;
+            }
+            frutosSecos.Remove(frutoSecoBorrar);
+            var registros = frutosSecos.Select(f => ConstruirLinea(f)).ToArray();
+            File.WriteAllLines(ruta, registros);//sobre escribe el archivo
         }
     }
 }

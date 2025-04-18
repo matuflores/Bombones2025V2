@@ -1,0 +1,8 @@
+﻿1|Mermelada
+2|Dulce de leche
+3|Crema de chocolate
+4|Coco
+5|Almendras
+6|Frambuesas
+7|Avellanas
+8|Crema de limon

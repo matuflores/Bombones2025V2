@@ -16,6 +16,11 @@ namespace Bombones2025.Servicios
             _frutoSecoRepositorio=new FrutoSecoRepositorio(ruta);
         }
 
+        public void Borrar(FrutoSeco frutoSecoBorrar)
+        {
+            _frutoSecoRepositorio.Borrar(frutoSecoBorrar);
+        }
+
         public bool Existe(FrutoSeco frutoSeco)
         {
             return _frutoSecoRepositorio.Existe(frutoSeco);

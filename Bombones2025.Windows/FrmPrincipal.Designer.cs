@@ -30,11 +30,12 @@
         {
             btnPaises = new Button();
             btnFrutosSecos = new Button();
+            btnTiposRellenos = new Button();
             SuspendLayout();
             // 
             // btnPaises
             // 
-            btnPaises.Location = new Point(88, 61);
+            btnPaises.Location = new Point(68, 61);
             btnPaises.Name = "btnPaises";
             btnPaises.Size = new Size(145, 64);
             btnPaises.TabIndex = 0;
@@ -44,7 +45,7 @@
             // 
             // btnFrutosSecos
             // 
-            btnFrutosSecos.Location = new Point(337, 61);
+            btnFrutosSecos.Location = new Point(327, 61);
             btnFrutosSecos.Name = "btnFrutosSecos";
             btnFrutosSecos.Size = new Size(145, 64);
             btnFrutosSecos.TabIndex = 1;
@@ -52,11 +53,22 @@
             btnFrutosSecos.UseVisualStyleBackColor = true;
             btnFrutosSecos.Click += btnFrutosSecos_Click;
             // 
+            // btnTiposRellenos
+            // 
+            btnTiposRellenos.Location = new Point(591, 61);
+            btnTiposRellenos.Name = "btnTiposRellenos";
+            btnTiposRellenos.Size = new Size(145, 64);
+            btnTiposRellenos.TabIndex = 2;
+            btnTiposRellenos.Text = "TIPOS DE RELLENOS";
+            btnTiposRellenos.UseVisualStyleBackColor = true;
+            btnTiposRellenos.Click += btnTiposRellenos_Click;
+            // 
             // FrmPrincipal
             // 
             AutoScaleDimensions = new SizeF(8F, 20F);
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(800, 450);
+            Controls.Add(btnTiposRellenos);
             Controls.Add(btnFrutosSecos);
             Controls.Add(btnPaises);
             Name = "FrmPrincipal";
@@ -69,5 +81,6 @@
 
         private Button btnPaises;
         private Button btnFrutosSecos;
+        private Button btnTiposRellenos;
     }
 }
