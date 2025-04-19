@@ -61,7 +61,25 @@ namespace Bombones2025.Windows
 
         private void btnNuevo_Click(object sender, EventArgs e)
         {
+            FrmTiposRellenosAE frm = new FrmTiposRellenosAE() { Text= "NUEVO TIPO DE RELLENO"};
+            DialogResult dr=frm.ShowDialog(this);
 
+            if (dr == DialogResult.Cancel)
+            {
+                return;
+            }
+
+            TipoRelleno? tipoRelleno = frm.GetTipoRelleno();
+
+            if (tipoRelleno==null)
+            {
+                return;
+            }
+
+            if (!_tiposRellenosServicio.Existe(tipoRelleno))
+            {
+                _tiposRellenosServicio.Guardar(tipoRelleno);
+            }
         }
     }
 }

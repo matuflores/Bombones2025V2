@@ -33,11 +33,11 @@ namespace Bombones2025.Servicios
 
         public void Guardar(FrutoSeco frutoSeco)
         {
-            if (frutoSeco.FrutoSecoId==0)
+            if (frutoSeco.FrutoSecoId==0)//si el id es 0 quiere decir que no tiene id por lo que es nuevo entonces se agrega
             {
                 _frutoSecoRepositorio.Agregar(frutoSeco);
             }
-            else
+            else//si no es 0 es porque existe por lo que hay que editarlo
             {
                 _frutoSecoRepositorio.Editar(frutoSeco);
             }

@@ -47,6 +47,7 @@
             buttonCancelFrutoSecoAE.TabIndex = 7;
             buttonCancelFrutoSecoAE.TextImageRelation = TextImageRelation.ImageAboveText;
             buttonCancelFrutoSecoAE.UseVisualStyleBackColor = true;
+            buttonCancelFrutoSecoAE.Click += buttonCancelFrutoSecoAE_Click;
             // 
             // buttonOkFrutoSecoAE
             // 

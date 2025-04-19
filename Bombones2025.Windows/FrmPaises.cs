@@ -116,9 +116,12 @@ namespace Bombones2025.Windows
             FrmPaisesAE frm = new FrmPaisesAE() { Text = "EDITAR PAIS" };
             frm.SetPais(pais);
             DialogResult dr = frm.ShowDialog(this);
+
             if (dr == DialogResult.Cancel) return;
+
             pais = frm.GetPais();
             if (pais == null) return;
+
             if (!_paisServicio.Existe(pais))
             {
                 _paisServicio.Guardar(pais);

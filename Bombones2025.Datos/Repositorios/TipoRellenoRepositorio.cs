@@ -49,5 +49,23 @@ namespace Bombones2025.Datos.Repositorios
         {
             return tiposRellenos;
         }
+
+        public bool Existe(TipoRelleno tipoRelleno)
+        {
+            return tipoRelleno.TipoRellenoId == 0 ? tiposRellenos.Any(t => t.NombreTipoRelleno == tipoRelleno.NombreTipoRelleno) :
+                tiposRellenos.Any(t => t.NombreTipoRelleno == tipoRelleno.NombreTipoRelleno && t.TipoRellenoId != tipoRelleno.TipoRellenoId);
+        }
+
+        public void Agregar(TipoRelleno tipoRelleno)
+        {
+            tipoRelleno.TipoRellenoId = SetearTipoDeRellenoId();
+            tiposRellenos.Add(tipoRelleno);
+            //DEJE ACA
+        }
+
+        private int SetearTipoDeRellenoId()
+        {
+            return tiposRellenos.Max(t => t.TipoRellenoId) + 1;//veo cual es el ID maximo y le sumo 1 para que sea correlativo.
+        }
     }
 }

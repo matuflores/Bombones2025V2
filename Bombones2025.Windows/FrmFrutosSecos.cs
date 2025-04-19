@@ -87,11 +87,11 @@ namespace Bombones2025.Windows
 
         private void btnBorrar_Click(object sender, EventArgs e)
         {
-            if (dgvDatosFrutosSecos.SelectedRows.Count==0)
+            if (dgvDatosFrutosSecos.SelectedRows.Count == 0)
             {
                 return;
             }
-            var r =dgvDatosFrutosSecos.SelectedRows[0];//guardamos en r la primer fila seleccionada
+            var r = dgvDatosFrutosSecos.SelectedRows[0];//guardamos en r la primer fila seleccionada
             FrutoSeco frutoSecoBorrar = (FrutoSeco)r.Tag!;
             DialogResult dr = MessageBox.Show($"¿QUIERE ELIMINAR EL FRUTO SECO {frutoSecoBorrar}?", "CONFIRMAR ELIMINACION",
                 MessageBoxButtons.YesNo,
@@ -101,6 +101,36 @@ namespace Bombones2025.Windows
             _frutosSecosServicio.Borrar(frutoSecoBorrar);
             dgvDatosFrutosSecos.Rows.Remove(r);
             MessageBox.Show("FRUTO SECO ELIMINADO CORRECTAMENTE");
+        }
+
+        private void btnEditar_Click(object sender, EventArgs e)
+        {
+            if (dgvDatosFrutosSecos.SelectedRows.Count==0)
+            {
+                return;//si no selecciono ninguna fila no se hace nada
+            }
+            var r = dgvDatosFrutosSecos.SelectedRows[0];//aca guardo en r la fila seleccionado
+            FrutoSeco? frutoSeco = (FrutoSeco)r.Tag!;
+
+            FrmFrutosSecosAE frm= new FrmFrutosSecosAE() { Text = "EDITAR FRUTO SECO"};
+            frm.SetFrutoSeco(frutoSeco);
+            DialogResult dr=frm.ShowDialog(this);
+            if (dr == DialogResult.Cancel) return;
+            
+            frutoSeco= frm.GetFrutoSeco();
+
+            if (frutoSeco == null) return;
+
+            if (!_frutosSecosServicio.Existe(frutoSeco))
+            {
+                _frutosSecosServicio.Guardar(frutoSeco);
+                SetearFila(r, frutoSeco);
+                MessageBox.Show("Pais Modificado", "Mensaje", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            }
+            else
+            {
+                MessageBox.Show("Pais Existente", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
         }
     }
 }

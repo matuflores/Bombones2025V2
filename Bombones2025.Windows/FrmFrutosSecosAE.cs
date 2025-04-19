@@ -24,6 +24,20 @@ namespace Bombones2025.Windows
             return frutoSeco;
         }
 
+        protected override void OnLoad(EventArgs e)//con este metodo hago que se me muestre el objeto que voy a editar en el cuadro de texto
+        {
+            base.OnLoad(e);
+            if (frutoSeco is not null)
+            {
+                textBoxFrutoSeco.Text = frutoSeco.NombreFrutoSeco;
+            }
+        }
+
+        public void SetFrutoSeco(FrutoSeco frutoSeco)//remplazo internal por public
+        {
+            this.frutoSeco = frutoSeco;
+        }
+
         private void buttonOkFrutoSecoAE_Click(object sender, EventArgs e)
         {
             if (ValidarDatos())//cuando apreto OK valido los datos
@@ -48,6 +62,11 @@ namespace Bombones2025.Windows
                 errorProviderFrutoSecoAE.SetError(textBoxFrutoSeco, "Nombre de Fruto Seco requerido");
             }
             return valido;
+        }
+
+        private void buttonCancelFrutoSecoAE_Click(object sender, EventArgs e)
+        {
+            DialogResult = DialogResult.Cancel;
         }
     }
 }

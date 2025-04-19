@@ -17,9 +17,26 @@ namespace Bombones2025.Servicios
             _tipoRellenoRepositorio = new TipoRellenoRepositorio(ruta);
         }
 
+        public bool Existe(TipoRelleno tipoRelleno)
+        {
+            return _tipoRellenoRepositorio.Existe(tipoRelleno);
+        }
+
         public List<TipoRelleno> GetTipoRellenos()
         {
             return _tipoRellenoRepositorio.GetTipoRellenos();
+        }
+
+        public void Guardar(TipoRelleno tipoRelleno)
+        {
+            if (tipoRelleno.TipoRellenoId==0)
+            {
+                _tipoRellenoRepositorio.Agregar(tipoRelleno);
+            }
+            else
+            {
+                _tipoRellenoRepositorio.Editar(tipoRelleno);
+            }
         }
     }
 }
