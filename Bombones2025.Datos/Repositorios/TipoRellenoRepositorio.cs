@@ -60,12 +60,34 @@ namespace Bombones2025.Datos.Repositorios
         {
             tipoRelleno.TipoRellenoId = SetearTipoDeRellenoId();
             tiposRellenos.Add(tipoRelleno);
-            //DEJE ACA
+
+            using (var escritor= new StreamWriter(ruta,true))//el TRUE indica que va agregar al final del archivo, no va a sobreescribirlo
+            {
+                string linea = ConstruirLinea(tipoRelleno);//construyo la linea
+                escritor.WriteLine(linea);
+            }
+        }
+
+        private string ConstruirLinea(TipoRelleno tipoRelleno)
+        {
+            return $"{tipoRelleno.TipoRellenoId}|{tipoRelleno.NombreTipoRelleno}";
         }
 
         private int SetearTipoDeRellenoId()
         {
             return tiposRellenos.Max(t => t.TipoRellenoId) + 1;//veo cual es el ID maximo y le sumo 1 para que sea correlativo.
+        }
+
+        public void Borrar(TipoRelleno tipoRelleno)//aca le cambio el nombre de tipoRellenoBorrar por tipoRelleno
+        {//si no encuentra un TIPO DE RELLENO con ese nombre devuelve un null por eso el ?. El First me trae el primero que trae la condicion que especifica
+            TipoRelleno? tipoRellenoBorrar = tiposRellenos.FirstOrDefault(t => t.NombreTipoRelleno == tipoRelleno.NombreTipoRelleno);
+            if (tipoRellenoBorrar is null)
+            {
+                return;
+            }
+            tiposRellenos.Remove(tipoRellenoBorrar);//RECORDATORIO, CUANDO EL OBJETO ES PLURAL ES DE LA LIST*****
+            var registros = tiposRellenos.Select(t => ConstruirLinea(t)).ToArray();//convierte todos los objetos que quedan en la lista a líneas de texto
+            File.WriteAllLines(ruta,registros);
         }
     }
 }

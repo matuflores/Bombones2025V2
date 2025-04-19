@@ -93,7 +93,7 @@ namespace Bombones2025.Windows
             }
             var r = dgvDatosFrutosSecos.SelectedRows[0];//guardamos en r la primer fila seleccionada
             FrutoSeco frutoSecoBorrar = (FrutoSeco)r.Tag!;
-            DialogResult dr = MessageBox.Show($"¿QUIERE ELIMINAR EL FRUTO SECO {frutoSecoBorrar}?", "CONFIRMAR ELIMINACION",
+            DialogResult dr = MessageBox.Show($"¿QUIERE ELIMINAR EL FRUTO SECO {frutoSecoBorrar.NombreFrutoSeco}?", "CONFIRMAR ELIMINACION",
                 MessageBoxButtons.YesNo,
                 MessageBoxIcon.Question,
                 MessageBoxDefaultButton.Button2);

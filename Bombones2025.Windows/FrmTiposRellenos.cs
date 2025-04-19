@@ -61,8 +61,8 @@ namespace Bombones2025.Windows
 
         private void btnNuevo_Click(object sender, EventArgs e)
         {
-            FrmTiposRellenosAE frm = new FrmTiposRellenosAE() { Text= "NUEVO TIPO DE RELLENO"};
-            DialogResult dr=frm.ShowDialog(this);
+            FrmTiposRellenosAE frm = new FrmTiposRellenosAE() { Text = "NUEVO TIPO DE RELLENO" };
+            DialogResult dr = frm.ShowDialog(this);
 
             if (dr == DialogResult.Cancel)
             {
@@ -71,15 +71,48 @@ namespace Bombones2025.Windows
 
             TipoRelleno? tipoRelleno = frm.GetTipoRelleno();
 
-            if (tipoRelleno==null)
+            if (tipoRelleno == null)
             {
                 return;
             }
 
-            if (!_tiposRellenosServicio.Existe(tipoRelleno))
+            if (!_tiposRellenosServicio.Existe(tipoRelleno))//si no existe lo creo y guardo
             {
                 _tiposRellenosServicio.Guardar(tipoRelleno);
+                DataGridViewRow r = new DataGridViewRow();//ahora voy agregarlo al DGV
+                r.CreateCells(dgvTiposRellenos);
+                SetearFila(r, tipoRelleno);
+                AgregarFila(r);
+                MessageBox.Show("TIPO DE RELLENO AGREGADO", "MENSAJE", MessageBoxButtons.OK, MessageBoxIcon.Information);
+
             }
+            else
+            {
+                MessageBox.Show("TIPO DE RELLENO EXISTENTE", "ERROR", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+            //CONCLUIDO EL METODO NUEVO LE DOY USO AL BOTON OK DEL FRM AE
+        }
+
+        private void btnBorrar_Click(object sender, EventArgs e)
+        {
+            if (dgvTiposRellenos.SelectedRows.Count==0)
+            {
+                return;
+            }
+            var r=dgvTiposRellenos.SelectedRows[0];
+            TipoRelleno tipoRellenoBorrar=(TipoRelleno)r.Tag!;
+            DialogResult dr=MessageBox.Show($"¿SEGURO QUE DESEA ELIMINAR EL TIPO DE RELLENO {tipoRellenoBorrar.NombreTipoRelleno}?",
+                "CONFIRMAR ELIMINACION", 
+                MessageBoxButtons.YesNo, 
+                MessageBoxIcon.Question, 
+                MessageBoxDefaultButton.Button2);
+            //Aca muestro un mensaje para asegurarme si el usuario quiere borrar
+            if (dr == DialogResult.No) return;//si no quiere borrar regreso!
+
+            _tiposRellenosServicio.Borrar(tipoRellenoBorrar);
+            dgvTiposRellenos.Rows.Remove(r);
+
+            MessageBox.Show($"EL TIPO DE RELLENO {tipoRellenoBorrar.NombreTipoRelleno} A SIDO ELIMINADO");
         }
     }
 }

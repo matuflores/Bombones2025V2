@@ -55,6 +55,7 @@
             buttonCancelTipoRellenoAE.TabIndex = 12;
             buttonCancelTipoRellenoAE.TextImageRelation = TextImageRelation.ImageAboveText;
             buttonCancelTipoRellenoAE.UseVisualStyleBackColor = true;
+            buttonCancelTipoRellenoAE.Click += buttonCancelTipoRellenoAE_Click;
             // 
             // buttonOkTipoRellenoAE
             // 
@@ -65,6 +66,7 @@
             buttonOkTipoRellenoAE.TabIndex = 11;
             buttonOkTipoRellenoAE.TextImageRelation = TextImageRelation.ImageAboveText;
             buttonOkTipoRellenoAE.UseVisualStyleBackColor = true;
+            buttonOkTipoRellenoAE.Click += buttonOkTipoRellenoAE_Click;
             // 
             // textBoxTipoRelleno
             // 

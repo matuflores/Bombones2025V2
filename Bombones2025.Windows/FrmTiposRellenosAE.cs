@@ -23,5 +23,35 @@ namespace Bombones2025.Windows
         {
             return tipoRelleno;
         }
+
+        private void buttonOkTipoRellenoAE_Click(object sender, EventArgs e)
+        {
+            if (ValidarDatos())
+            {
+                if (tipoRelleno is null)
+                {
+                    tipoRelleno = new TipoRelleno();
+                }
+                tipoRelleno.NombreTipoRelleno = textBoxTipoRelleno.Text;
+                DialogResult = DialogResult.OK;
+            }
+        }
+
+        private bool ValidarDatos()
+        {
+            bool validar = true;
+            errorProviderTipoRellenoAE.Clear();
+            if (string.IsNullOrEmpty(textBoxTipoRelleno.Text))// el IsNullOrEmpty se fija si un string es null
+            {
+                validar= false;
+                errorProviderTipoRellenoAE.SetError(textBoxTipoRelleno,"Tipo de relleno es requerido");
+            }
+            return validar;
+        }
+
+        private void buttonCancelTipoRellenoAE_Click(object sender, EventArgs e)
+        {
+            DialogResult = DialogResult.Cancel;
+        }
     }
 }

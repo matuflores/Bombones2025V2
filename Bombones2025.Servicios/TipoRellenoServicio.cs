@@ -17,6 +17,11 @@ namespace Bombones2025.Servicios
             _tipoRellenoRepositorio = new TipoRellenoRepositorio(ruta);
         }
 
+        public void Borrar(TipoRelleno tipoRellenoBorrar)
+        {
+            _tipoRellenoRepositorio.Borrar(tipoRellenoBorrar);
+        }
+
         public bool Existe(TipoRelleno tipoRelleno)
         {
             return _tipoRellenoRepositorio.Existe(tipoRelleno);
@@ -35,7 +40,7 @@ namespace Bombones2025.Servicios
             }
             else
             {
-                _tipoRellenoRepositorio.Editar(tipoRelleno);
+                //_tipoRellenoRepositorio.Editar(tipoRelleno);
             }
         }
     }

@@ -127,6 +127,7 @@
             btnBorrar.Size = new Size(70, 64);
             btnBorrar.Text = "BORRAR";
             btnBorrar.TextImageRelation = TextImageRelation.ImageAboveText;
+            btnBorrar.Click += btnBorrar_Click;
             // 
             // btnEditar
             // 
