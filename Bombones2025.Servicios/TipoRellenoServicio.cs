@@ -40,7 +40,7 @@ namespace Bombones2025.Servicios
             }
             else
             {
-                //_tipoRellenoRepositorio.Editar(tipoRelleno);
+                _tipoRellenoRepositorio.Editar(tipoRelleno);
             }
         }
     }

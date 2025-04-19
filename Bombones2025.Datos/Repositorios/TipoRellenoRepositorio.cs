@@ -89,5 +89,17 @@ namespace Bombones2025.Datos.Repositorios
             var registros = tiposRellenos.Select(t => ConstruirLinea(t)).ToArray();//convierte todos los objetos que quedan en la lista a líneas de texto
             File.WriteAllLines(ruta,registros);
         }
+
+        public void Editar(TipoRelleno tipoRelleno)
+        {
+            var tipoRellenoEditado = tiposRellenos.FirstOrDefault(t => t.TipoRellenoId == tipoRelleno.TipoRellenoId);
+            if (tipoRellenoEditado is null)
+            {
+                return;
+            }
+            tipoRellenoEditado.NombreTipoRelleno = tipoRelleno.NombreTipoRelleno;//tipoRellenoEditado es el objeto original que ya estaba en la lista
+            var registros = tiposRellenos.Select(t => ConstruirLinea(t)).ToArray();//tipoRellenoEditado, cambiá el nombre y poné el que tiene el objeto nuevo tipoRelleno
+            File.WriteAllLines(ruta, registros);//Select para construir una línea de texto por cada TipoRelleno
+        }//el WriteAllLines borra lo anterior y vuelve a escribir todo de nuevo actualizado
     }
 }

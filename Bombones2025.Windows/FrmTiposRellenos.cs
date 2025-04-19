@@ -95,16 +95,16 @@ namespace Bombones2025.Windows
 
         private void btnBorrar_Click(object sender, EventArgs e)
         {
-            if (dgvTiposRellenos.SelectedRows.Count==0)
+            if (dgvTiposRellenos.SelectedRows.Count == 0)
             {
                 return;
             }
-            var r=dgvTiposRellenos.SelectedRows[0];
-            TipoRelleno tipoRellenoBorrar=(TipoRelleno)r.Tag!;
-            DialogResult dr=MessageBox.Show($"¿SEGURO QUE DESEA ELIMINAR EL TIPO DE RELLENO {tipoRellenoBorrar.NombreTipoRelleno}?",
-                "CONFIRMAR ELIMINACION", 
-                MessageBoxButtons.YesNo, 
-                MessageBoxIcon.Question, 
+            var r = dgvTiposRellenos.SelectedRows[0];
+            TipoRelleno tipoRellenoBorrar = (TipoRelleno)r.Tag!;
+            DialogResult dr = MessageBox.Show($"¿SEGURO QUE DESEA ELIMINAR EL TIPO DE RELLENO {tipoRellenoBorrar.NombreTipoRelleno}?",
+                "CONFIRMAR ELIMINACION",
+                MessageBoxButtons.YesNo,
+                MessageBoxIcon.Question,
                 MessageBoxDefaultButton.Button2);
             //Aca muestro un mensaje para asegurarme si el usuario quiere borrar
             if (dr == DialogResult.No) return;//si no quiere borrar regreso!
@@ -113,6 +113,42 @@ namespace Bombones2025.Windows
             dgvTiposRellenos.Rows.Remove(r);
 
             MessageBox.Show($"EL TIPO DE RELLENO {tipoRellenoBorrar.NombreTipoRelleno} A SIDO ELIMINADO");
+        }
+
+        private void btnEditar_Click(object sender, EventArgs e)
+        {
+            if (dgvTiposRellenos.SelectedRows.Count==0)
+            {
+                return;
+            }
+
+            var r = dgvTiposRellenos.SelectedRows[0];
+            TipoRelleno? tipoRelleno = (TipoRelleno)r.Tag!;
+
+            FrmTiposRellenosAE frm = new FrmTiposRellenosAE() { Text="EDITAR TIPO DE RELLENO"};
+            frm.SetTipoRelleno(tipoRelleno);
+            DialogResult dr=frm.ShowDialog(this);
+            if (dr == DialogResult.Cancel) return;
+
+            tipoRelleno=frm.GetTipoRelleno();
+
+            if (tipoRelleno == null) return;
+
+            if (!_tiposRellenosServicio.Existe(tipoRelleno))
+            {
+                _tiposRellenosServicio.Guardar(tipoRelleno);
+                SetearFila(r,tipoRelleno);
+                MessageBox.Show("TIPO DE RELLENO EDITADO", "MENSAJE", 
+                    MessageBoxButtons.OK, 
+                    MessageBoxIcon.Information);
+            }
+            else
+            {
+                MessageBox.Show("EL TIPO DE RELLENO YA EXISTE", "ERROR",
+                    MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+
+
         }
     }
 }

@@ -24,6 +24,16 @@ namespace Bombones2025.Windows
             return tipoRelleno;
         }
 
+        protected override void OnLoad(EventArgs e)
+        {
+            base.OnLoad(e);
+            if (tipoRelleno is not null)
+            {
+                textBoxTipoRelleno.Text = tipoRelleno.NombreTipoRelleno;
+            }
+
+        }
+
         private void buttonOkTipoRellenoAE_Click(object sender, EventArgs e)
         {
             if (ValidarDatos())
@@ -53,5 +63,10 @@ namespace Bombones2025.Windows
         {
             DialogResult = DialogResult.Cancel;
         }
+
+        public void SetTipoRelleno(TipoRelleno tipoRelleno)
+        {
+            this.tipoRelleno = tipoRelleno;
+        }//despues de este metodo agrego el override onload para cargar el nombre del objeto a editar en el textbox
     }
 }
