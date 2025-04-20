@@ -1,0 +1,5 @@
+﻿1|Chocolate Amargo
+2|Chocolate Semiamargo
+3|Cacao 60%
+4|Chocolate de Leche
+5|Chocolate Blanco
