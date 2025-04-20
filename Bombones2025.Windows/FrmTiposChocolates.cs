@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Bombones2025.Servicios;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -12,10 +13,12 @@ namespace Bombones2025.Windows
 {
     public partial class FrmTiposChocolates : Form
     {
+        private readonly TipoChocolateServicio _tipoChocolateServicio;
 
-        public FrmTiposChocolates()
+        public FrmTiposChocolates(TipoChocolateServicio tipoChocolateServicio)
         {
             InitializeComponent();
+            _tipoChocolateServicio = tipoChocolateServicio;
         }
 
         private void FrmTiposChocolates_Load(object sender, EventArgs e)
