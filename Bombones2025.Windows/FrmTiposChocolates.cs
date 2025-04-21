@@ -1,4 +1,5 @@
-﻿using Bombones2025.Servicios;
+﻿using Bombones2025.Entidades;
+using Bombones2025.Servicios;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -14,6 +15,7 @@ namespace Bombones2025.Windows
     public partial class FrmTiposChocolates : Form
     {
         private readonly TipoChocolateServicio _tipoChocolateServicio;
+        private List<TipoChocolate> _tiposChocolates=new();
 
         public FrmTiposChocolates(TipoChocolateServicio tipoChocolateServicio)
         {
@@ -23,7 +25,33 @@ namespace Bombones2025.Windows
 
         private void FrmTiposChocolates_Load(object sender, EventArgs e)
         {
+            _tiposChocolates = _tipoChocolateServicio.GetTipoCholates();
+            MostrarDatosEnGrilla();
+        }
 
+        private void MostrarDatosEnGrilla()
+        {
+            dgvTiposChocolates.Rows.Clear();
+            foreach (var tipoChocolate in _tiposChocolates)
+            {
+                DataGridViewRow r = new DataGridViewRow();
+                r.CreateCells(dgvTiposChocolates);
+                SetearFila(r, tipoChocolate);
+                AgregarFila(r);
+                
+            }
+        }
+
+        private void AgregarFila(DataGridViewRow r)
+        {
+            dgvTiposChocolates.Rows.Add(r);
+        }
+
+        private void SetearFila(DataGridViewRow r, TipoChocolate tipoChocolate)
+        {
+            r.Cells[0].Value = tipoChocolate.TipoChocolateId;
+            r.Cells[1].Value = tipoChocolate.NombreTipoChocolate;
+            r.Tag=tipoChocolate;
         }
     }
 }

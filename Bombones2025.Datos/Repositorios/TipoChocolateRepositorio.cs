@@ -44,5 +44,10 @@ namespace Bombones2025.Datos.Repositorios
                 TipoChocolateId = tipoChocolateId,
             };
         }
+
+        public List<TipoChocolate> GetTipoChocolate()
+        {
+            return tiposChocolates;
+        }
     }
 }

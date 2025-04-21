@@ -30,6 +30,9 @@
         {
             components = new System.ComponentModel.Container();
             splitContainer1 = new SplitContainer();
+            dgvTiposChocolates = new DataGridView();
+            TipoRellenoId = new DataGridViewTextBoxColumn();
+            TiposChocolates = new DataGridViewTextBoxColumn();
             toolStripTiposChocolates = new ToolStrip();
             btnNuevo = new ToolStripButton();
             btnBorrar = new ToolStripButton();
@@ -40,15 +43,12 @@
             toolStripSeparator2 = new ToolStripSeparator();
             btnPrint = new ToolStripButton();
             btnCerrar = new ToolStripButton();
-            dataGridView1 = new DataGridView();
             errorProvider1 = new ErrorProvider(components);
-            TipoRellenoId = new DataGridViewTextBoxColumn();
-            TiposChocolates = new DataGridViewTextBoxColumn();
             ((System.ComponentModel.ISupportInitialize)splitContainer1).BeginInit();
             splitContainer1.Panel1.SuspendLayout();
             splitContainer1.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)dgvTiposChocolates).BeginInit();
             toolStripTiposChocolates.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)dataGridView1).BeginInit();
             ((System.ComponentModel.ISupportInitialize)errorProvider1).BeginInit();
             SuspendLayout();
             // 
@@ -61,11 +61,44 @@
             // 
             // splitContainer1.Panel1
             // 
-            splitContainer1.Panel1.Controls.Add(dataGridView1);
+            splitContainer1.Panel1.Controls.Add(dgvTiposChocolates);
             splitContainer1.Panel1.Controls.Add(toolStripTiposChocolates);
             splitContainer1.Size = new Size(800, 450);
             splitContainer1.SplitterDistance = 357;
             splitContainer1.TabIndex = 0;
+            // 
+            // dgvTiposChocolates
+            // 
+            dgvTiposChocolates.AllowUserToAddRows = false;
+            dgvTiposChocolates.AllowUserToDeleteRows = false;
+            dgvTiposChocolates.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            dgvTiposChocolates.Columns.AddRange(new DataGridViewColumn[] { TipoRellenoId, TiposChocolates });
+            dgvTiposChocolates.Dock = DockStyle.Fill;
+            dgvTiposChocolates.Location = new Point(0, 67);
+            dgvTiposChocolates.Name = "dgvTiposChocolates";
+            dgvTiposChocolates.ReadOnly = true;
+            dgvTiposChocolates.RowHeadersVisible = false;
+            dgvTiposChocolates.RowHeadersWidth = 51;
+            dgvTiposChocolates.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
+            dgvTiposChocolates.Size = new Size(800, 290);
+            dgvTiposChocolates.TabIndex = 4;
+            // 
+            // TipoRellenoId
+            // 
+            TipoRellenoId.HeaderText = "TipoRellenoId";
+            TipoRellenoId.MinimumWidth = 6;
+            TipoRellenoId.Name = "TipoRellenoId";
+            TipoRellenoId.ReadOnly = true;
+            TipoRellenoId.Visible = false;
+            TipoRellenoId.Width = 125;
+            // 
+            // TiposChocolates
+            // 
+            TiposChocolates.AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
+            TiposChocolates.HeaderText = "Tipos de Chocolates";
+            TiposChocolates.MinimumWidth = 6;
+            TiposChocolates.Name = "TiposChocolates";
+            TiposChocolates.ReadOnly = true;
             // 
             // toolStripTiposChocolates
             // 
@@ -157,42 +190,9 @@
             btnCerrar.Text = "CERRAR";
             btnCerrar.TextImageRelation = TextImageRelation.ImageAboveText;
             // 
-            // dataGridView1
-            // 
-            dataGridView1.AllowUserToAddRows = false;
-            dataGridView1.AllowUserToDeleteRows = false;
-            dataGridView1.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            dataGridView1.Columns.AddRange(new DataGridViewColumn[] { TipoRellenoId, TiposChocolates });
-            dataGridView1.Dock = DockStyle.Fill;
-            dataGridView1.Location = new Point(0, 67);
-            dataGridView1.Name = "dataGridView1";
-            dataGridView1.ReadOnly = true;
-            dataGridView1.RowHeadersVisible = false;
-            dataGridView1.RowHeadersWidth = 51;
-            dataGridView1.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
-            dataGridView1.Size = new Size(800, 290);
-            dataGridView1.TabIndex = 4;
-            // 
             // errorProvider1
             // 
             errorProvider1.ContainerControl = this;
-            // 
-            // TipoRellenoId
-            // 
-            TipoRellenoId.HeaderText = "TipoRellenoId";
-            TipoRellenoId.MinimumWidth = 6;
-            TipoRellenoId.Name = "TipoRellenoId";
-            TipoRellenoId.ReadOnly = true;
-            TipoRellenoId.Visible = false;
-            TipoRellenoId.Width = 125;
-            // 
-            // TiposChocolates
-            // 
-            TiposChocolates.AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
-            TiposChocolates.HeaderText = "Tipos de Chocolates";
-            TiposChocolates.MinimumWidth = 6;
-            TiposChocolates.Name = "TiposChocolates";
-            TiposChocolates.ReadOnly = true;
             // 
             // FrmTiposChocolates
             // 
@@ -207,9 +207,9 @@
             splitContainer1.Panel1.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)splitContainer1).EndInit();
             splitContainer1.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)dgvTiposChocolates).EndInit();
             toolStripTiposChocolates.ResumeLayout(false);
             toolStripTiposChocolates.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)dataGridView1).EndInit();
             ((System.ComponentModel.ISupportInitialize)errorProvider1).EndInit();
             ResumeLayout(false);
         }
@@ -227,7 +227,7 @@
         private ToolStripSeparator toolStripSeparator2;
         private ToolStripButton btnPrint;
         private ToolStripButton btnCerrar;
-        private DataGridView dataGridView1;
+        private DataGridView dgvTiposChocolates;
         private ErrorProvider errorProvider1;
         private DataGridViewTextBoxColumn TipoRellenoId;
         private DataGridViewTextBoxColumn TiposChocolates;

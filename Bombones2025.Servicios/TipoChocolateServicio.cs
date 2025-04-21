@@ -1,4 +1,5 @@
 ﻿using Bombones2025.Datos.Repositorios;
+using Bombones2025.Entidades;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -16,6 +17,9 @@ namespace Bombones2025.Servicios
             _tipoChocolateRepositorio = new TipoChocolateRepositorio(ruta);
         }
 
-
+        public List<TipoChocolate> GetTipoCholates()
+        {
+            return _tipoChocolateRepositorio.GetTipoChocolate();
+        }
     }
 }
