@@ -77,5 +77,17 @@ namespace Bombones2025.Datos.Repositorios
         {
             return tiposChocolates.Max(tc => tc.TipoChocolateId) + 1;
         }
+
+        public void Borrar(TipoChocolate tipoChocolate)//remplazo nombre del objeto
+        {
+            TipoChocolate? tipoChocolateBorrar = tiposChocolates.FirstOrDefault(tc => tc.NombreTipoChocolate == tipoChocolate.NombreTipoChocolate);
+            if (tipoChocolateBorrar is null)
+            {
+                return;
+            }
+            tiposChocolates.Remove(tipoChocolateBorrar);
+            var registros = tiposChocolates.Select(tc => ConstruirLinea(tc)).ToArray();
+            File.WriteAllLines(ruta, registros);
+        }
     }
 }

@@ -61,7 +61,7 @@ namespace Bombones2025.Windows
 
         private void btnNuevo_Click(object sender, EventArgs e)
         {
-            FrmTiposChocolatesAE frm=new FrmTiposChocolatesAE() { Text="NUEVO TIPO DE CHOCOLATE"};
+            FrmTiposChocolatesAE frm = new FrmTiposChocolatesAE() { Text = "NUEVO TIPO DE CHOCOLATE" };
             DialogResult dr = frm.ShowDialog(this);
             if (dr == DialogResult.Cancel) return;
 
@@ -75,22 +75,48 @@ namespace Bombones2025.Windows
             if (!_tipoChocolateServicio.Existe(tipoChocolate))
             {
                 _tipoChocolateServicio.Guardar(tipoChocolate);
-                DataGridViewRow r=new DataGridViewRow();
+                DataGridViewRow r = new DataGridViewRow();
                 r.CreateCells(dgvTiposChocolates);
                 SetearFila(r, tipoChocolate);
                 AgregarFila(r);
-                MessageBox.Show("Tipo de chocolate agregado", 
-                    "Mensaje", 
-                    MessageBoxButtons.OK, 
+                MessageBox.Show("Tipo de chocolate agregado",
+                    "Mensaje",
+                    MessageBoxButtons.OK,
                     MessageBoxIcon.Information);
             }
             else
             {
                 MessageBox.Show("Tipo de chocolate existente",
                     "Error",
-                    MessageBoxButtons.OK, 
+                    MessageBoxButtons.OK,
                     MessageBoxIcon.Error);
             }
+        }
+
+        private void btnBorrar_Click(object sender, EventArgs e)
+        {
+            if (dgvTiposChocolates.SelectedRows.Count == 0)
+            {
+                return;
+            }
+            var r = dgvTiposChocolates.SelectedRows[0];
+            TipoChocolate tipoChocolateBorrar = (TipoChocolate)r.Tag!;
+            DialogResult dr = MessageBox.Show($"¿QUIERES ELIMINAR {tipoChocolateBorrar.NombreTipoChocolate}?",
+                "CONFIRMAR ELIMINACION",
+                MessageBoxButtons.YesNo,
+                MessageBoxIcon.Question,
+                MessageBoxDefaultButton.Button2);
+
+            if (dr == DialogResult.No) return;
+
+            _tipoChocolateServicio.Borrar(tipoChocolateBorrar);
+            dgvTiposChocolates.Rows.Remove(r);
+            MessageBox.Show("TIPO DE CHOCOLATE ELIMINADO EXITOSAMENTE");
+        }
+
+        private void btnEditar_Click(object sender, EventArgs e)
+        {
+
         }
     }
 }

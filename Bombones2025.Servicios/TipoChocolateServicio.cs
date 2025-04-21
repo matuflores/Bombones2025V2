@@ -17,6 +17,11 @@ namespace Bombones2025.Servicios
             _tipoChocolateRepositorio = new TipoChocolateRepositorio(ruta);
         }
 
+        public void Borrar(TipoChocolate tipoChocolateBorrar)
+        {
+            _tipoChocolateRepositorio.Borrar(tipoChocolateBorrar);
+        }
+
         public bool Existe(TipoChocolate tipoChocolate)
         {
             return _tipoChocolateRepositorio.Existe(tipoChocolate);
