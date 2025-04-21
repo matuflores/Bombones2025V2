@@ -116,7 +116,38 @@ namespace Bombones2025.Windows
 
         private void btnEditar_Click(object sender, EventArgs e)
         {
+            if (dgvTiposChocolates.SelectedRows.Count == 0)
+            {
+                return;
+            }
+            var r = dgvTiposChocolates.SelectedRows[0];
+            TipoChocolate? tipoChocolate = (TipoChocolate)r.Tag!;
 
+            FrmTiposChocolatesAE frm = new FrmTiposChocolatesAE() { Text = "EDITAR TIPO DE CHOCOLATE" };
+            frm.SetTipoChocolate(tipoChocolate);
+            DialogResult dr = frm.ShowDialog(this);
+            if (dr == DialogResult.Cancel) return;
+
+            tipoChocolate=frm.GetTipoChocolate();
+
+            if (tipoChocolate is null) return;
+
+            if (!_tipoChocolateServicio.Existe(tipoChocolate))
+            {
+                _tipoChocolateServicio.Guardar(tipoChocolate);
+                SetearFila(r,tipoChocolate);
+                MessageBox.Show("TIPO DE CHOCOLATE MODIFICADO EXITOSAMENTE", 
+                    "MENSAJE",
+                    MessageBoxButtons.OK, 
+                    MessageBoxIcon.Information);
+            }
+            else
+            {
+                MessageBox.Show("TIPO DE CHOCOLATE EXISTE",
+                    "ERROR",
+                    MessageBoxButtons.OK, 
+                    MessageBoxIcon.Error);
+            }
         }
     }
 }

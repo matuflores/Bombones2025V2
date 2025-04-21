@@ -24,6 +24,20 @@ namespace Bombones2025.Windows
             return tipoChocolate;
         }
 
+        protected override void OnLoad(EventArgs e)
+        {
+            base.OnLoad(e);
+            if (tipoChocolate is not null)//si no especifico el NOT me sale error en el objeto
+            {
+                textBoxTipoChocolate.Text = tipoChocolate.NombreTipoChocolate;
+            }
+        }
+
+        internal void SetTipoChocolate(TipoChocolate tipoChocolate)
+        {
+            this.tipoChocolate = tipoChocolate;
+        }
+
         private void buttonCancelTipoChocolateAE_Click(object sender, EventArgs e)
         {
             DialogResult = DialogResult.Cancel;

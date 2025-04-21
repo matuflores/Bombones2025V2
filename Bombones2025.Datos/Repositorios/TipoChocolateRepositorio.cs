@@ -89,5 +89,15 @@ namespace Bombones2025.Datos.Repositorios
             var registros = tiposChocolates.Select(tc => ConstruirLinea(tc)).ToArray();
             File.WriteAllLines(ruta, registros);
         }
+
+        public void Editar(TipoChocolate tipoChocolate)
+        {
+            var tipoChocolateEditado = tiposChocolates.FirstOrDefault(tc => tc.TipoChocolateId == tipoChocolate.TipoChocolateId);
+            if (tipoChocolateEditado is null) return;
+
+            tipoChocolateEditado.NombreTipoChocolate = tipoChocolate.NombreTipoChocolate;
+            var registros = tiposChocolates.Select(tc => ConstruirLinea(tc)).ToArray();
+            File.WriteAllLines (ruta, registros);
+        }
     }
 }
