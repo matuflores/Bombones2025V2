@@ -49,5 +49,33 @@ namespace Bombones2025.Datos.Repositorios
         {
             return tiposChocolates;
         }
+
+        public bool Existe(TipoChocolate tipoChocolate)
+        {
+            return tipoChocolate.TipoChocolateId == 0 ? tiposChocolates.Any(tc => tc.NombreTipoChocolate == tipoChocolate.NombreTipoChocolate) :
+                tiposChocolates.Any(tc => tc.NombreTipoChocolate == tipoChocolate.NombreTipoChocolate && tc.TipoChocolateId != tipoChocolate.TipoChocolateId);
+        }
+
+        public void Agregar(TipoChocolate tipoChocolate)
+        {
+            tipoChocolate.TipoChocolateId = SetearTipoChocolateId();
+            tiposChocolates.Add(tipoChocolate);
+
+            using (var escritor = new StreamWriter(ruta, true)) 
+            {
+                string linea = ConstruirLinea(tipoChocolate);
+                escritor.WriteLine(linea);
+            }
+        }
+
+        private string ConstruirLinea(TipoChocolate tipoChocolate)
+        {
+            return $"{tipoChocolate.TipoChocolateId}|{tipoChocolate.NombreTipoChocolate}";
+        }
+
+        private int SetearTipoChocolateId()
+        {
+            return tiposChocolates.Max(tc => tc.TipoChocolateId) + 1;
+        }
     }
 }

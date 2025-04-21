@@ -119,6 +119,7 @@
             btnNuevo.Size = new Size(62, 64);
             btnNuevo.Text = "NUEVO";
             btnNuevo.TextImageRelation = TextImageRelation.ImageAboveText;
+            btnNuevo.Click += btnNuevo_Click;
             // 
             // btnBorrar
             // 
@@ -189,6 +190,7 @@
             btnCerrar.Size = new Size(67, 64);
             btnCerrar.Text = "CERRAR";
             btnCerrar.TextImageRelation = TextImageRelation.ImageAboveText;
+            btnCerrar.Click += btnCerrar_Click;
             // 
             // errorProvider1
             // 
@@ -201,6 +203,7 @@
             ClientSize = new Size(800, 450);
             Controls.Add(splitContainer1);
             Name = "FrmTiposChocolates";
+            StartPosition = FormStartPosition.CenterScreen;
             Text = "Tipos Chocolates";
             Load += FrmTiposChocolates_Load;
             splitContainer1.Panel1.ResumeLayout(false);

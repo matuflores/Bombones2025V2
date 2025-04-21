@@ -31,6 +31,7 @@
             btnPaises = new Button();
             btnFrutosSecos = new Button();
             btnTiposRellenos = new Button();
+            btnTiposChocolates = new Button();
             SuspendLayout();
             // 
             // btnPaises
@@ -45,7 +46,7 @@
             // 
             // btnFrutosSecos
             // 
-            btnFrutosSecos.Location = new Point(327, 61);
+            btnFrutosSecos.Location = new Point(306, 61);
             btnFrutosSecos.Name = "btnFrutosSecos";
             btnFrutosSecos.Size = new Size(145, 64);
             btnFrutosSecos.TabIndex = 1;
@@ -55,7 +56,7 @@
             // 
             // btnTiposRellenos
             // 
-            btnTiposRellenos.Location = new Point(591, 61);
+            btnTiposRellenos.Location = new Point(68, 190);
             btnTiposRellenos.Name = "btnTiposRellenos";
             btnTiposRellenos.Size = new Size(145, 64);
             btnTiposRellenos.TabIndex = 2;
@@ -63,11 +64,22 @@
             btnTiposRellenos.UseVisualStyleBackColor = true;
             btnTiposRellenos.Click += btnTiposRellenos_Click;
             // 
+            // btnTiposChocolates
+            // 
+            btnTiposChocolates.Location = new Point(306, 190);
+            btnTiposChocolates.Name = "btnTiposChocolates";
+            btnTiposChocolates.Size = new Size(145, 64);
+            btnTiposChocolates.TabIndex = 3;
+            btnTiposChocolates.Text = "TIPOS DE CHOCOLATES";
+            btnTiposChocolates.UseVisualStyleBackColor = true;
+            btnTiposChocolates.Click += btnTiposChocolates_Click;
+            // 
             // FrmPrincipal
             // 
             AutoScaleDimensions = new SizeF(8F, 20F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(800, 450);
+            ClientSize = new Size(519, 431);
+            Controls.Add(btnTiposChocolates);
             Controls.Add(btnTiposRellenos);
             Controls.Add(btnFrutosSecos);
             Controls.Add(btnPaises);
@@ -82,5 +94,6 @@
         private Button btnPaises;
         private Button btnFrutosSecos;
         private Button btnTiposRellenos;
+        private Button btnTiposChocolates;
     }
 }

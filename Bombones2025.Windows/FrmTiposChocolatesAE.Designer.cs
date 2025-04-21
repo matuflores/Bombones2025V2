@@ -33,8 +33,8 @@
             buttonCancelTipoChocolateAE = new Button();
             buttonOkTipoChocolateAE = new Button();
             textBoxTipoChocolate = new TextBox();
-            errorProvider1 = new ErrorProvider(components);
-            ((System.ComponentModel.ISupportInitialize)errorProvider1).BeginInit();
+            errorProviderTipoChocolateAE = new ErrorProvider(components);
+            ((System.ComponentModel.ISupportInitialize)errorProviderTipoChocolateAE).BeginInit();
             SuspendLayout();
             // 
             // labelTiposChocolate
@@ -55,6 +55,7 @@
             buttonCancelTipoChocolateAE.TabIndex = 16;
             buttonCancelTipoChocolateAE.TextImageRelation = TextImageRelation.ImageAboveText;
             buttonCancelTipoChocolateAE.UseVisualStyleBackColor = true;
+            buttonCancelTipoChocolateAE.Click += buttonCancelTipoChocolateAE_Click;
             // 
             // buttonOkTipoChocolateAE
             // 
@@ -65,6 +66,7 @@
             buttonOkTipoChocolateAE.TabIndex = 15;
             buttonOkTipoChocolateAE.TextImageRelation = TextImageRelation.ImageAboveText;
             buttonOkTipoChocolateAE.UseVisualStyleBackColor = true;
+            buttonOkTipoChocolateAE.Click += buttonOkTipoChocolateAE_Click;
             // 
             // textBoxTipoChocolate
             // 
@@ -73,9 +75,9 @@
             textBoxTipoChocolate.Size = new Size(415, 27);
             textBoxTipoChocolate.TabIndex = 14;
             // 
-            // errorProvider1
+            // errorProviderTipoChocolateAE
             // 
-            errorProvider1.ContainerControl = this;
+            errorProviderTipoChocolateAE.ContainerControl = this;
             // 
             // FrmTiposChocolatesAE
             // 
@@ -88,7 +90,7 @@
             Controls.Add(textBoxTipoChocolate);
             Name = "FrmTiposChocolatesAE";
             Text = "Tipos Chocolates AE";
-            ((System.ComponentModel.ISupportInitialize)errorProvider1).EndInit();
+            ((System.ComponentModel.ISupportInitialize)errorProviderTipoChocolateAE).EndInit();
             ResumeLayout(false);
             PerformLayout();
         }
@@ -99,6 +101,6 @@
         private Button buttonCancelTipoChocolateAE;
         private Button buttonOkTipoChocolateAE;
         private TextBox textBoxTipoChocolate;
-        private ErrorProvider errorProvider1;
+        private ErrorProvider errorProviderTipoChocolateAE;
     }
 }

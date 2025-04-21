@@ -40,5 +40,12 @@ namespace Bombones2025.Windows
             //antes de darle uso a esto tengo que inicializar todo en el formulario TipoRellenos 
             //luego debo cargar el Load del FRM
         }
+
+        private void btnTiposChocolates_Click(object sender, EventArgs e)
+        {
+            TipoChocolateServicio servicio = new TipoChocolateServicio("TiposChocolates.txt");
+            FrmTiposChocolates frm = new FrmTiposChocolates(servicio) { Text = "Listado de Tipos de Chocolates" };
+            frm.ShowDialog(this);
+        }
     }
 }

@@ -17,9 +17,26 @@ namespace Bombones2025.Servicios
             _tipoChocolateRepositorio = new TipoChocolateRepositorio(ruta);
         }
 
+        public bool Existe(TipoChocolate tipoChocolate)
+        {
+            return _tipoChocolateRepositorio.Existe(tipoChocolate);
+        }
+
         public List<TipoChocolate> GetTipoCholates()
         {
             return _tipoChocolateRepositorio.GetTipoChocolate();
+        }
+
+        public void Guardar(TipoChocolate tipoChocolate)
+        {
+            if (tipoChocolate.TipoChocolateId==0)
+            {
+                _tipoChocolateRepositorio.Agregar(tipoChocolate);
+            }
+            else
+            {
+                //_tipoChocolateRepositorio.Editar(tipoChocolate);
+            }
         }
     }
 }

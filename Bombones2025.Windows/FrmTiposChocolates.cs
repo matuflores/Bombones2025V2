@@ -15,7 +15,7 @@ namespace Bombones2025.Windows
     public partial class FrmTiposChocolates : Form
     {
         private readonly TipoChocolateServicio _tipoChocolateServicio;
-        private List<TipoChocolate> _tiposChocolates=new();
+        private List<TipoChocolate> _tiposChocolates = new();
 
         public FrmTiposChocolates(TipoChocolateServicio tipoChocolateServicio)
         {
@@ -38,7 +38,7 @@ namespace Bombones2025.Windows
                 r.CreateCells(dgvTiposChocolates);
                 SetearFila(r, tipoChocolate);
                 AgregarFila(r);
-                
+
             }
         }
 
@@ -51,7 +51,46 @@ namespace Bombones2025.Windows
         {
             r.Cells[0].Value = tipoChocolate.TipoChocolateId;
             r.Cells[1].Value = tipoChocolate.NombreTipoChocolate;
-            r.Tag=tipoChocolate;
+            r.Tag = tipoChocolate;
+        }
+
+        private void btnCerrar_Click(object sender, EventArgs e)
+        {
+            Close();
+        }
+
+        private void btnNuevo_Click(object sender, EventArgs e)
+        {
+            FrmTiposChocolatesAE frm=new FrmTiposChocolatesAE() { Text="NUEVO TIPO DE CHOCOLATE"};
+            DialogResult dr = frm.ShowDialog(this);
+            if (dr == DialogResult.Cancel) return;
+
+            TipoChocolate? tipoChocolate = frm.GetTipoChocolate();
+
+            if (tipoChocolate is null)
+            {
+                return;
+            }
+
+            if (!_tipoChocolateServicio.Existe(tipoChocolate))
+            {
+                _tipoChocolateServicio.Guardar(tipoChocolate);
+                DataGridViewRow r=new DataGridViewRow();
+                r.CreateCells(dgvTiposChocolates);
+                SetearFila(r, tipoChocolate);
+                AgregarFila(r);
+                MessageBox.Show("Tipo de chocolate agregado", 
+                    "Mensaje", 
+                    MessageBoxButtons.OK, 
+                    MessageBoxIcon.Information);
+            }
+            else
+            {
+                MessageBox.Show("Tipo de chocolate existente",
+                    "Error",
+                    MessageBoxButtons.OK, 
+                    MessageBoxIcon.Error);
+            }
         }
     }
 }
